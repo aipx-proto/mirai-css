@@ -5,10 +5,13 @@
 
 html,
 body {
-  font-family: var(--font-sans);
-  color: var(--color-body);
-  font-size: var(--text-default);
+  font-family: var(--mri-font-family-sans);
+  color: var(--mri-color-text-2);
+  font-size: var(--mri-font-size-5);
   /* line-height: normal; */
+
+  /* maybe? */
+  /* font-size: var(--mri-size-font); */
 }
 
 h1,
@@ -20,7 +23,7 @@ h6,
 b,
 strong,
 th {
-  font-weight: var(--font-heavyweight);
+  font-weight: var(--mri-font-weight-bold);
 }
 
 h1,
@@ -33,7 +36,7 @@ strong,
 em,
 th,
 summary {
-  color: var(--color-heading);
+  color: var(--mri-color-text-1);
 }
 
 i,
@@ -46,45 +49,45 @@ em {
 } */
 
 h1 {
-  font-size: var(--text-4xl);
+  font-size: var(--mri-font-size-1);
 }
 
 h2 {
-  font-size: var(--text-3xl);
+  font-size: var(--mri-font-size-2);
 }
 
 h3 {
-  font-size: var(--text-xl);
+  font-size: var(--mri-font-size-3);
 }
 
 h4 {
-  font-size: var(--text-base);
+  font-size: var(--mri-font-size-4);
 }
 
 h5 {
-  font-size: var(--text-sm);
+  font-size: var(--mri-font-size-5);
 }
 
 h6,
 small {
-  font-size: var(--text-xs);
+  font-size: var(--mri-font-size-6);
 }
 
 blockquote {
-  border-left: 2px solid var(--color-border);
+  border-left: 2px solid var(--mri-color-border-1);
   margin: 0;
   padding-left: 8px;
-  color: var(--color-heading);
+  color: var(--mri-color-text-1);
   font-style: italic;
 }
 q {
   font-style: italic;
-  color: var(--color-heading);
+  color: var(--mri-color-text-1);
 }
 
 ul,
 ol {
-  padding-left: var(--p-default);
+  padding-left: 16px;
 }
 
 code,
@@ -92,31 +95,25 @@ kbd,
 pre,
 samp,
 tt {
-  font-family: var(--font-mono);
-  /* font-size: var(--font-mono-scale); */
+  font-family: var(--mri-font-family-mono);
+  font-size: var(--mri-font-family-mono-scale);
 }
 
 kbd {
   padding: 2px 4px;
   border-radius: 3px;
-  background-color: var(--color-selected);
+  background-color: var(--mri-color-background-2);
 }
 
 pre {
-  background-color: var(--color-selected);
-  padding: var(--p-default);
-  border-radius: var(--radius-md);
+  background-color: var(--mri-color-background-2);
+  padding: 16px;
+  border-radius: var(--mri-border-radius-medium);
   overflow-x: auto;
 }
 
 hr {
   border: none;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--mri-color-border-1);
   margin: 20px 0;
-}
-
-mark, ::selection {
-  background-color: oklch(from var(--color-brand) l c h / 0.3);
-  color: var(--color-heading);
-  border-radius: 2px;
 }
