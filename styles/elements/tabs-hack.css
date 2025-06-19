@@ -25,6 +25,7 @@
 
 */
 
+
 /** Hide the #panel-N when the corresponding radio is not checked */
 :has([aria-controls="panel-1"] input[type="radio"]:not(:checked)) #panel-1,
 :has([aria-controls="panel-2"] input[type="radio"]:not(:checked)) #panel-2,
@@ -50,6 +51,11 @@
   display: none;
 }
 
-label[role="tab"] input[type="radio"] {
-  display: none;
+label[role="tab"] {
+  cursor: pointer;
+
+  /* hide the radio button */
+  & input[type="radio"] {
+    display: none;
+  }
 }

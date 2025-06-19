@@ -1,5 +1,0 @@
-:focus-visible {
-  outline: 2px solid var(--color-body);
-  outline-offset: -1px;
-  z-index: 1;
-}

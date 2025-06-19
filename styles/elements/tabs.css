@@ -1,15 +1,17 @@
-.tabs {
+.mri-tab-list,
+[role="tablist"] {
   display: flex;
   gap: 2px;
   flex-direction: row;
 
-  &.vertical {
+  &.mri-vertical {
     flex-direction: column;
   }
 
-  &:not(.vertical) {
-    & .tab {
-      --_negative-margin: calc(var(--p-default) * -1);
+  &:not(.mri-vertical) {
+    & .mri-tab,
+    & [role="tab"] {
+      --_negative-margin: calc(var(--mri-size-padding) * -1);
       &:first-child {
         margin-left: var(--_negative-margin);
       }
@@ -20,12 +22,10 @@
   }
 }
 
-.tab {
-  --_size-tab-underline: 3px;
-  --_color-tab-underline-hover: var(--color-border);
-  --_color-tab-underline-active: var(--color-link);
-  --_duration-tab-underline: 0.1s;
+/* TODO: button and a anchor variant & exception */
 
+.mri-tab,
+[role="tab"] {
   cursor: pointer;
   appearance: none;
   line-height: 1;
@@ -35,12 +35,18 @@
   justify-content: center;
   gap: 4px;
 
-  border-radius: var(--rounded-default);
-  font-size: var(--text-default);
-  min-height: var(--h-default);
-  padding: 0 var(--p-default);
+  border-radius: var(--mri-border-radius);
+  font-size: var(--mri-size-font);
+  /* color: var(--mri-color-text-1); */
+  min-height: var(--mri-size-height);
+  padding: 0 var(--mri-size-padding);
 
-  transition: background-color var(--duration-rest) linear;
+  transition: background-color var(--mri-duration-rest) linear;
+
+  --_size-tab-underline: 2px;
+  --_color-tab-underline-hover: var(--mri-color-text-4);
+  --_color-tab-underline-active: var(--mri-color-brand-text);
+  --_duration-tab-underline: 0.1s;
 
   position: relative;
 
@@ -49,11 +55,11 @@
     content: "";
     display: block;
     position: absolute;
-    border-radius: 999px;
-    inset: auto var(--p-default) 0 var(--p-default);
+    border-radius: var(--mri-border-radius-circular);
+    inset: auto var(--mri-size-padding) 0 var(--mri-size-padding);
     height: var(--_size-tab-underline);
     transform-origin: center;
-    transition: transform var(--_duration-tab-underline) ease-out, opacity var(--duration-rest) linear;
+    transition: transform var(--_duration-tab-underline) ease-out, opacity var(--mri-duration-rest) linear;
   }
 
   &:before {
@@ -66,8 +72,12 @@
     transform: scaleX(0);
   }
 
-  .vertical & {
-    --_size-tab-underline-padding: calc((var(--h-default) - var(--h-icon)) / 2);
+  .mri-vertical & {
+    --_size-tab-underline-padding: calc((var(--mri-size-height) - var(--mri-size-icon)) / 2);
+    
+    &:not(.mri-icon-only) {
+      justify-content: start;
+    }
 
     &:after,
     &:before {
@@ -81,50 +91,59 @@
     }
   }
 
-  .vertical &:not(.icon-only),
-  .vertical:not(.icon-only) & {
-    justify-content: start;
-  }
-
-  &.icon-only,
-  .icon-only & {
+  &.mri-icon-only {
     padding: 0;
-    width: var(--h-default);
-    height: var(--h-default);
-    flex: 0 0 auto;
+    width: var(--mri-size-height);
+    height: var(--mri-size-height);
   }
 
-  &:not(:disabled):not(.disabled):not(:has(input[type="radio"]:disabled)) {
-    &:hover {
-      transition-duration: var(--duration-hover);
-      color: var(--color-heading);
+  &:hover {
+    transition-duration: var(--mri-duration-hover);
 
-      .type-subtle & {
-        background-color: var(--color-hover);
+    .mri-appearance-subtle & {
+      background-color: var(--mri-interactive-hover);
+    }
+
+    &:before {
+      opacity: 1;
+    }
+  }
+
+  /* pressed */
+  &:active {
+    transition-duration: var(--mri-duration-hover);
+
+    .mri-appearance-subtle & {
+      background-color: var(--mri-interactive-pressed);
+    }
+  }
+
+  /* disabled */
+  &:disabled,
+  &.mri-disabled,
+  &:has(input[type="radio"]:disabled) {
+    cursor: not-allowed;
+
+    &:hover {
+      .mri-appearance-subtle & {
+        background-color: unset;
       }
 
       &:before {
-        opacity: 1;
-      }
-    }
-
-    &:active {
-      transition-duration: var(--duration-hover);
-      color: var(--color-heading);
-
-      .type-subtle & {
-        background-color: var(--color-active);
+        opacity: 0;
       }
     }
   }
 
-  &.selected,
+  /* selected tab */
+  &.mri-active,
+  &[aria-selected="true"],
   &:has(input[type="radio"]:checked) {
-    font-weight: var(--font-heavyweight);
-    color: var(--color-heading);
+    font-weight: var(--mri-font-weight-bold);
+    color: var(--mri-color-text-1);
 
-    .type-subtle & {
-      background-color: var(--color-selected);
+    .mri-appearance-subtle & {
+      background-color: var(--mri-color-background-2);
     }
 
     &:after {
@@ -132,24 +151,18 @@
     }
   }
 
-  &:disabled,
-  &.disabled,
   &:has(input[type="radio"]:disabled) {
     cursor: not-allowed;
-    opacity: var(--opacity-disabled);
-
-    &:before {
-      opacity: 0;
-    }
+    opacity: var(--mri-opacity-disabled);
   }
 }
 
-a.tab {
+a.mri-tab {
   text-decoration: none;
   color: inherit;
 }
 
-button.tab {
+button.mri-tab {
   background: none;
   border: none;
 }

@@ -1,21 +1,19 @@
 dialog {
   color: inherit;
 
-  border: 1px solid var(--color-border);
-  background-color: var(--color-card);
-  box-shadow: var(--shadow-lg);
-  border-radius: var(--radius-lg);
+  border: 1px solid var(--mri-color-border-1);
+  background-color: var(--mri-color-background-1);
+  box-shadow: var(--mri-shadow-16);
+  border-radius: var(--mri-border-radius-large);
   overflow: hidden;
 
   padding: 12px 24px;
-  margin: auto;
 
   &:has(main, footer, header) {
     padding: 0;
 
     header {
       padding: 24px 24px 12px 24px;
-      /* border-bottom: 1px solid var(--color-border); */
 
       h1,
       h2,
@@ -30,21 +28,20 @@ dialog {
     main {
       padding: 12px 24px;
       /* the main content should be scrollable */
-      max-height: 70vh;
+      max-height: 60vh;
       overflow-y: auto;
-      /* background-color: var(--color-page); */
     }
     
     footer {
       padding: 12px 24px;
+      border-top: 1px solid var(--mri-color-border-2);
       display: flex;
       justify-content: flex-end;
       gap: 12px;
-      /* border-top: 1px solid var(--color-border); */
     }
   }
 
-  .dialog-close {
+  .mri-dialog-close {
     position: absolute;
     top: 0;
     right: 0;
@@ -64,7 +61,7 @@ dialog {
 
   transform: scale(0.8);
   &::backdrop {
-    background-color: var(--color-shadow-overlay);
+    background-color: var(--mri-color-background-overlay);
   }
 
   &[open] {

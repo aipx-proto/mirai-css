@@ -1,0 +1,31 @@
+/* 
+Colors rules:
+- Write all layouts in dark theme (unless explicitly asked not to).
+- Primarily use `neutral` colors.
+- For background, primarily use `neutral-900` and `neutral-700`, but you may also use `black` and `neutral-800`.
+- For border, only use `neutral-900` or `neutral-600`.
+- For text, only use `white`, `neutral-200` or `neutral-400`.
+*/
+
+:root,
+.dark {
+  --color-black: var(--mri-color-background-4);
+  --color-neutral-950: color-mix(in oklch, var(--mri-color-background-4), var(--mri-color-background-3));
+  --color-neutral-900: var(--mri-color-background-3, var(--mri-color-border-1));
+  --color-neutral-800: var(--mri-color-background-2);
+  --color-neutral-700: var(--mri-color-background-1);
+  --color-neutral-600: var(--mri-color-border-1);
+  --color-neutral-500: color-mix(in oklch, var(--mri-color-border-1), var(--mri-color-text-3));
+  --color-neutral-400: var(--mri-color-text-3);
+  --color-neutral-300: color-mix(in oklch, var(--mri-color-text-3), var(--mri-color-text-2));
+  --color-neutral-200: var(--mri-color-text-2);
+  --color-neutral-100: color-mix(in oklch, var(--mri-color-text-2), var(--mri-color-text-1));
+  --color-white: var(--mri-color-text-1);
+
+  --font-sans: var(--mri-font-family-sans);
+  --font-mono: var(--mri-font-family-mono);
+}
+
+/* .light {
+  ...currently unsupported
+} */
