@@ -1,6 +1,0 @@
----
-description: 
-globs: 
-alwaysApply: false
----
-Write code in small, incremental steps. After each step, pause and ask the user for confirmation before proceeding. Only complete the specific tasks requested—avoid adding extra functionality. Adhere closely to the user's instructions and let the user guide the overall architecture. Organize code into clear, reusable functions, and use these functions when building longer processes.

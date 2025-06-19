@@ -2,5 +2,8 @@
   "cssvar.ignore": [
     "**/node_modules/**",
     "**/fluent-vars.css"
-  ]
+  ],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
 }

@@ -1,35 +1,67 @@
-/**! 
- * Mirai CSS - 未来
- * GitHub: https://github.com/aipx-proto/mirai-css
- * Demo: https://aipx-proto.github.io/mirai-css
- * LLMs.txt: https://github.com/aipx-proto/mirai-css/blob/main/styles/mirai.css.md
-!*/
+/*! Fluent.css */
 
-@import "./font-aptos/font-aptos.css";
-@import "./font-monaspace-neon/font-monaspace-neon.css";
+@import "tailwindcss" source(none);
 
-@import "./variables/mirai-theme.css";
-@import "./variables/tailwind-var-overrides.css";
-/* @import "./variables/shadcn.css"; */
-@import "./elements/reset.css";
+/* @source "../index.html"; */
+/* @source "../build/custom-properties.css"; */
 
-@import "./elements/icons.css";
-@import "./elements/accordion.css";
-@import "./elements/base.css";
-@import "./elements/button.css";
-@import "./elements/checkbox-radio.css";
-@import "./elements/control-group.css";
-@import "./elements/dialog.css";
-@import "./elements/disabled.css";
-@import "./elements/fieldset.css";
-@import "./elements/input.css";
-@import "./elements/link.css";
-@import "./elements/popover.css";
-@import "./elements/progress.css";
-@import "./elements/table.css";
-@import "./elements/tabs.css";
+@import "./theme/variants.css";
+
+@import "tailwindcss/preflight" layer(base);
+
+@import "./font-segoe/font-segoe.css";
+
+@import "./theme/color-palette.css" layer(theme);
+@import "./theme/color-theme.css" layer(theme);
+
+@import "./theme/font.css" layer(theme);
+@import "./theme/elevation.css" layer(theme);
+@import "./theme/sizes.css" layer(theme);
+@import "./theme/transition.css" layer(theme);
+
+@import "./elements/base.css" layer(components);
+@import "./elements/typography.css" layer(components);
+@import "./elements/icons.css" layer(components);
+@import "./elements/scrollbar.css" layer(components);
+
+@import "./elements/button.css" layer(components);
+@import "./elements/link.css" layer(components);
+@import "./elements/checkbox-radio.css" layer(components);
+@import "./elements/switch.css" layer(components);
+@import "./elements/input.css" layer(components);
+@import "./elements/button-group.css" layer(components);
+@import "./elements/slider.css" layer(components);
+@import "./elements/fieldset.css" layer(components);
+
+@import "./elements/progress.css" layer(components);
+@import "./elements/spinner.css" layer(components);
+
+@import "./elements/accordion.css" layer(components);
+@import "./elements/dialog.css" layer(components);
+@import "./elements/popover.css" layer(components);
+
+@import "./elements/table.css" layer(components);
+@import "./elements/tabs.css" layer(components);
+
+@import "./elements/disabled.css" layer(components);
+@import "./elements/focus.css" layer(components);
+
 @import "./elements/tabs-hack.css";
-@import "./elements/typography.css";
-@import "./elements/scrollbar.css";
-@import "./elements/switch.css";
-@import "./elements/slider.css";
+
+@source inline("text-{xs,sm,md,base,lg,xl,2xl,3xl,4xl,5xl,6xl,7xl}");
+
+@source inline("font-{sans,mono,serif,numeric,normal,semibold,bold}");
+
+@source inline("{text,bg,border}-{card,panel,page,border,outline,muted,body,heading,link,brand,contrast-brand,input,selected,hover,active}");
+
+@source inline("{text,bg,border}-{blue,neutral}-{50,100,200,300,400,500,600,700,800,900,950}");
+
+@source inline("{text,bg,border}-{black,white}");
+
+@source inline("rounded-{none,xs,sm,md,lg,xl,2xl,3xl,4xl,full}");
+
+/* override inline the .shadow-* classes - or it does some funky --tw-shadow-color things */
+/* @source inline("shadow-{2xs,xs,sm,md,lg,xl,2xl}"); */
+@import "./theme/box-shadow.css" layer(utilities);
+
+@source inline("opacity-disabled");

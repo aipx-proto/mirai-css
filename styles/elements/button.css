@@ -1,133 +1,169 @@
-button:where(:not(.mri-tab)),
+button:where(:not(.tab)),
 input[type="button"],
 input[type="submit"],
 input[type="reset"],
-a.mri-button,
-select.mri-button,
-.mri-button,
+a.btn,
+select.btn,
+.btn,
 ::-webkit-file-upload-button {
+  &,
+  &.type-default {
+    --_color-background: var(--color-input);
+    --_color-border: var(--color-border);
+    --_color-hover: var(--color-hover);
+    --_color-active: var(--color-active);
+    --_color-selected: var(--color-selected);
+    --_color-text: var(--color-heading);
+  }
+
+  border-radius: var(--rounded-default);
+  font-size: var(--text-default);
+  min-height: var(--h-default);
+  padding: 0 var(--p-default);
+
   cursor: pointer;
   appearance: none;
   line-height: 1;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
-
-  /* default circular */
-  --_border-radius: var(--mri-border-radius-circular);
-
-  [class*="mri-shape-"] &,
-  &[class*="mri-shape-"] {
-    --_border-radius: var(--mri-border-radius);
-  }
-
-  border-radius: var(--_border-radius, var(--mri-border-radius));
-
-  font-weight: var(--mri-font-weight-bold);
-  font-size: var(--mri-size-font);
-  color: var(--mri-color-text-1);
-  min-height: var(--mri-size-height);
-  padding: 0 var(--mri-size-padding);
-
-  background-color: var(--mri-interactive-rest);
-  transition: background-color var(--mri-duration-rest) linear;
+  font-weight: var(--font-heavyweight);
+  color: var(--_color-text);
+  background-color: var(--_color-background);
+  border: 1px solid var(--_color-border);
+  transition: background-color var(--duration-rest) linear;
   transition-property: background-color, color, border-color;
 
-  &:not(:disabled) {
+  &:not(:disabled):not(.disabled) {
     &:hover {
-      background-color: var(--mri-interactive-hover);
-      transition-duration: var(--mri-duration-hover);
-
-      &.mri-appearance-transparent,
-      &.mri-appearance-subtle {
-        color: var(--mri-color-brand-text);
-      }
-    }
-
-    &:active,
-    &.mri-active {
-      background-color: var(--mri-interactive-pressed);
-      transition-duration: var(--mri-duration-hover);
-
-      &.mri-appearance-transparent,
-      &.mri-appearance-subtle {
-        color: var(--mri-color-brand-text);
-      }
-    }
-  }
-
-  border: 1px solid var(--mri-color-border-1);
-
-  .mri-input & {
-    border: none;
-    background-color: transparent;
-
-    &:hover {
-      background-color: var(--mri-interactive-rest);
+      background-color: var(--_color-hover);
+      transition-duration: var(--duration-hover);
     }
 
     &:active {
-      background-color: var(--mri-interactive-active);
+      background-color: var(--_color-active);
+      transition-duration: var(--duration-hover);
     }
-
-    --_border-radius: var(--mri-border-radius);
   }
 
-  &.mri-appearance-subtle,
-  &.mri-appearance-primary,
-  &.mri-appearance-transparent {
+  &.selected {
+    background-color: var(--_color-selected);
+  }
+
+  &:disabled,
+  &.disabled {
+    background-color: var(--color-selected);
     border-color: transparent;
+    color: inherit;
   }
 
-  &.mri-appearance-primary {
-    color: var(--mri-color-on-brand-text);
+  .btn-group.type-primary &,
+  &.type-primary {
+    --_color-background: var(--color-brand);
+    --_color-hover: oklch(from var(--_color-background) calc(l - 0.1) c h);
+    --_color-active: oklch(from var(--_color-background) calc(l - 0.2) c h);
+    --_color-selected: oklch(from var(--_color-background) calc(l - 0.1) c h);
+    --_color-text: var(--color-contrast-brand);
+    --_color-border: transparent;
   }
 
-  &.mri-icon-only {
+  .btn-group.type-outline &,
+  &.type-outline {
+    --_color-background: transparent;
+  }
+
+  .menu &,
+  .input &,
+  .btn-group.type-subtle &,
+  &.type-subtle {
+    --_color-border: transparent;
+    --_color-background: transparent;
+
+    &:hover .icon {
+      color: var(--color-brand);
+    }
+  }
+
+  .btn-group.type-transparent &,
+  &.type-transparent {
+    --_color-border: transparent;
+    --_color-background: transparent;
+    --_color-hover: transparent;
+    --_color-active: transparent;
+    --_color-selected: transparent;
+
+    padding: 2px;
+    min-height: auto;
+    &:hover,
+    &.selected {
+      --_color-text: var(--color-link);
+    }
+    &:active,
+    &.selected:hover {
+      --_color-text: oklch(from var(--color-link) calc(l - 0.1) c h);
+    }
+  }
+
+  &.icon-only,
+  .icon-only & {
     padding: 0;
-    width: var(--mri-size-height);
-    height: var(--mri-size-height);
+    width: var(--h-default);
+    height: var(--h-default);
+    flex: 0 0 auto;
   }
 
-  .mri-menu & {
-    --_border-radius: var(--mri-border-radius-small);
+  .menu & {
+    --_border-radius: var(--radius-sm);
     border-color: transparent;
     justify-content: flex-start;
-    font-weight: var(--fontWeightNormal);
+    font-weight: var(--font-normal);
   }
 }
 
-a.mri-button {
+a.btn {
   text-decoration: none;
 }
 
-select.mri-button {
+select.btn,
+.btn.select {
+  --_icon-background-image: var(--icon-chevron-down);
+  --_icon-background-position: right calc(var(--p-default) - 4px) center;
+  --_icon-background-size: var(--h-icon);
+  --_icon-background: var(--_icon-background-image) var(--_icon-background-position) / var(--_icon-background-size)
+    no-repeat;
+  --_icon-padding-right: calc(var(--h-icon) + var(--p-default));
+
   appearance: none;
-  background-image: var(--mri-icon-chevron-down);
-  background-position: right var(--mri-size-padding) center;
+  background-image: var(--_icon-background-image);
+  background-position: var(--_icon-background-position);
+  background-size: var(--_icon-background-size);
   background-repeat: no-repeat;
-  background-size: 16px;
-  padding-right: calc(var(--mri-size-padding) + 16px + 4px);
+  padding-right: var(--_icon-padding-right);
 }
 
 input[type="file"] {
   &::-webkit-file-upload-button {
     font-family: inherit;
+
+    /* css vars don't inherit through the shadow dom? */
+    background-color: var(--color-input);
+    border-color: var(--color-border);
+    border: 1px solid var(--color-border);
+    color: var(--color-heading);
   }
 
   &:hover {
     &::-webkit-file-upload-button {
-      background-color: var(--mri-interactive-hover);
-      transition-duration: var(--mri-duration-hover);
+      background-color: var(--color-hover);
+      transition-duration: var(--duration-hover);
     }
   }
 
   &:active {
     &::-webkit-file-upload-button {
-      background-color: var(--mri-interactive-pressed);
-      transition-duration: var(--mri-duration-hover);
+      background-color: var(--color-active);
+      transition-duration: var(--duration-hover);
     }
   }
 }

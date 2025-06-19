@@ -1,78 +1,129 @@
-input[type="checkbox"]:where(:not(.mri-switch)),
+input[type="checkbox"]:where(:not(.switch)),
 input[type="radio"] {
-  --_color-border: var(--mri-color-border-1);
-  --_color-background: var(--mri-color-background-2);
-  --_color-checked: var(--mri-color-brand-base);
+  --_size-dimension: var(--h-icon);
 
-  --_size-dimension: var(--mri-size-icon);
+  --_color-background: var(--color-input);
+  --_color-border: var(--color-outline);
+  --_color-hover: var(--color-hover);
+  --_color-active: var(--color-active);
+
+  /* &.type-subtle { TODO } */
+  /* &.type-outline { TODO } */
 
   appearance: none;
   margin: 0;
+  flex: 0 0 auto;
   width: var(--_size-dimension);
   height: var(--_size-dimension);
-
   cursor: pointer;
-
   border: 1px solid var(--_color-border);
   border-radius: var(--_border-radius);
   background-color: var(--_color-background);
 
-  label & {
-    vertical-align: middle;
+  label:has(&) {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
   }
 
   position: relative;
-
   &:after {
     content: "";
     display: block;
     position: absolute;
     inset: 2px;
     border-radius: var(--_border-radius);
-    background-color: var(--_color-checked);
+    background-color: var(--_color-background);
     opacity: 0;
   }
 
-  &:checked {
-    border-color: var(--_color-checked);
+  &,
+  &:after {
+    transition: 0.1s ease-in-out;
+    transition-property: background-color, border-color;
   }
 
-  &:disabled {
-    --_color-checked: var(--_color-border);
+  &:not(:disabled):not(.disabled) {
+    &:hover,
+    &:hover:after {
+      background-color: var(--_color-hover);
+      transition-duration: var(--duration-hover);
+    }
+
+    &:active,
+    &:active:after {
+      background-color: var(--_color-active);
+      transition-duration: var(--duration-active);
+    }
+  }
+
+  &:checked {
+    --_color-background: var(--color-brand);
+    --_color-hover: oklch(from var(--_color-background) calc(l - 0.1) c h);
+    --_color-active: oklch(from var(--_color-background) calc(l - 0.2) c h);
+    --_color-border: var(--color-brand);
+
+    &:after {
+      opacity: 1;
+    }
+  }
+
+  &:disabled,
+  &.disabled {
+    background-color: var(--color-selected);
+    cursor: not-allowed;
+  }
+
+  label:has(&:disabled, &.disabled) {
+    opacity: var(--opacity-disabled);
   }
 }
 
 input[type="radio"] {
-  --_border-radius: var(--mri-border-radius-circular);
+  &:checked {
+    &,
+    &:hover,
+    &:active {
+      background-color: transparent !important;
+    }
+  }
+
+  --_border-radius: 999px;
   &:after {
     border-radius: var(--_border-radius);
   }
-  &:checked:after {
-    opacity: 1;
-  }
 }
 
-input[type="checkbox"]:where(:not(.mri-switch)) {
-  --_border-radius: var(--mri-border-radius-small);
+input[type="checkbox"]:where(:not(.switch)) {
+  --_border-radius: var(--radius-sm);
 
   &:after {
     border-radius: calc(var(--_border-radius) - 2px);
-  }
 
-  &:checked:after {
     inset: 0;
-    opacity: 1;
-    background-image: var(--mri-icon-check);
+    background-image: var(--icon-check);
     background-position: center;
     background-repeat: no-repeat;
     background-size: calc(var(--_size-dimension) - 4px);
   }
 
   &:indeterminate {
-    border-color: var(--_color-checked);
-  }
-  &:indeterminate:after {
-    inset: 4px;
+    --_color-background: var(--color-brand);
+    --_color-hover: oklch(from var(--_color-background) calc(l - 0.1) c h);
+    --_color-active: oklch(from var(--_color-background) calc(l - 0.2) c h);
+    --_color-border: var(--color-brand);
+
+    &,
+    &:hover,
+    &:active {
+      background-color: transparent !important;
+    }
+
+    &:after {
+      inset: 4px;
+      background-image: none;
+      background-color: var(--_color-background);
+    }
   }
 
   &:indeterminate:after,

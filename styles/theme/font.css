@@ -1,0 +1,72 @@
+@theme {
+  /* Fluent 2 https://fluent2.microsoft.design/typography ; */
+  /* Tailwind https://tailwindcss.com/docs/font-size ; */
+
+  /* Caption 2 */
+  --text-xs: 10px;
+  --text-xs--line-height: 14px;
+
+  /* Caption 1 */
+  --text-sm: 12px;
+  --text-sm--line-height: 16px;
+
+  /* Body 1 */
+  --text-base: 14px;
+  --text-base--line-height: 20px;
+
+  /* Subtitle 2 */
+  --text-lg: 16px;
+  --text-lg--line-height: 22px;
+
+  /* Subtitle 1 */
+  --text-xl: 20px;
+  --text-xl--line-height: 26px;
+
+  /* Title 3 */
+  --text-2xl: 24px;
+  --text-2xl--line-height: 32px;
+
+  /* Title 2 */
+  --text-3xl: 28px;
+  --text-3xl--line-height: 36px;
+
+  /* Title 1 */
+  --text-4xl: 32px;
+  --text-4xl--line-height: 40px;
+
+  /* Large Title */
+  --text-5xl: 40px;
+  --text-5xl--line-height: 52px;
+
+  /* non-standard */
+  --text-6xl: 52px;
+  --text-6xl--line-height: 68px;
+
+  /* Display */
+  --text-7xl: 68px;
+  --text-7xl--line-height: 92px;
+
+  /* non-standard */
+  --text-8xl: 96px;
+  --text-8xl--line-height: 116px;
+
+  /* non-standard */
+  --text-9xl: 128px;
+  --text-9xl--line-height: 140px;
+
+  /* alias for consistency */
+  --text-md: var(--text-base);
+  --text-md--line-height: var(--text-base--line-height);
+
+  --font-sans: "Segoe UI", system-ui, Roboto, Helvetica Neue, ui-sans-serif, sans-serif;
+  --font-mono: "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", ui-monospace, monospace;
+  --font-serif: Georgia, Cambria, ui-serif, serif;
+  --font-numeric: var(--font-mono);
+
+  /* smaller font size optically aligns the x-height of monospace fonts with sans-serif fonts */
+  /* --font-mono-scale: 0.9em; */
+
+  /* headings, buttons, selected tab, etc... */
+  --font-heavyweight: 600;
+
+}

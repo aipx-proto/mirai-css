@@ -1,0 +1,48 @@
+@theme {
+  /* https://www.figma.com/design/SicJs4UNaTg29YS8yqhqFv/Fluent-2-design-language ; */
+
+  --l-0: 100%;
+  --l-50: 98.5%;
+  --l-100: 97%;
+  --l-200: 92.2%;
+  --l-300: 87%;
+  --l-400: 70.8%;
+  --l-500: 55.6%;
+  --l-600: 43.9%;
+  --l-700: 37.1%;
+  --l-800: 26.9%;
+  --l-900: 20.5%;
+  --l-950: 14.5%;
+  --l-1000: 0%;
+
+  --h-x: 0;
+  --c-x: 50;
+
+  --red: #d13438; /* fluent-red */
+  --orange: #f7630c; /* fluent-orange */
+  --amber: #eaa300; /* fluent-marigold */
+  --yellow: #fde300; /* fluent-yellow */
+  --lime: #73aa24; /* fluent-lime */
+  --green: #107c10; /* fluent-green */
+  --emerald: #00cc6a; /* fluent-seafoam */
+  --teal: #038387; /* fluent-teal */
+  --cyan: #0099bc; /* fluent-cyan */
+  --sky: #3a96dd; /* fluent-lightblue */
+  --blue: #0078d4; /* fluent-blue */
+  --indigo: #004e8c; /* fluent-royalblue */
+  --violet: #4f6bed; /* fluent-cornflower */
+  --purple: #5c2e91; /* fluent-purple */
+  --fuchsia: #c239b3; /* fluent-berry */
+  --pink: #e43ba6; /* fluent-pink */
+  --rose: #c50f1f; /* fluent-cranberry */
+
+  --slate: #859599; /* fluent-silver */
+  --gray: #69797e; /* fluent-platinum */
+  --zinc: #394146; /* fluent-anchor */
+  --neutral: #393939; /* fluent-charcoal */
+  --stone: #7a7574; /* fluent-beige */
+
+  --color-white: oklch(100% 0 0);
+  --color-black: oklch(0% 0 0);
+  
+}

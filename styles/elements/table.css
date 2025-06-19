@@ -1,49 +1,23 @@
 
 table {
-  --_border-radius: var(--mri-border-radius-medium);
+  --_border-radius: var(--radius-md);
+  --_color-border: var(--color-border);
+  --_color-background: var(--color-background);
 
-  /* these are !important because LLMs will always try to override them */
+  /* these are !important because LLMs will frequently try to override them */
   border-collapse: separate !important;
   border-spacing: 0 !important;
 
   border-radius: var(--_border-radius);
-  border: solid 1px var(--mri-color-border-1);
+  /* border: solid 1px var(--_color-border); */
+  background-color: var(--_color-background);
   width: 100%;
 }
 
 th,
 td {
   text-align: left;
-  border-bottom: solid 1px var(--mri-color-border-1);
-  padding: 12px 16px;
+  border-bottom: solid 1px var(--color-border);
+  padding: var(--p-default);
 }
 
-th {
-  background-color: var(--mri-color-background-2);
-  padding: 8px 16px;
-}
-
-table > :last-child tr:last-child {
-  & th,
-  & td {
-    border-bottom: none;
-    &:first-child {
-      border-bottom-left-radius: var(--_border-radius);
-    }
-    &:last-child {
-      border-bottom-right-radius: var(--_border-radius);
-    }
-  }
-}
-
-table > :first-child tr:first-child {
-  & th,
-  & td {
-    &:first-child {
-      border-top-left-radius: var(--_border-radius);
-    }
-    &:last-child {
-      border-top-right-radius: var(--_border-radius);
-    }
-  }
-}

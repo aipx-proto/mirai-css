@@ -13,60 +13,102 @@ input:where(:not([type])),
   input[type="url"],
   /* input[type="file"], */
   input[type="tel"],
-  select:where(:not(.mri-button)),
+  select:where(:not(.btn)),
   textarea,
-  .mri-input {
-  font-size: var(--mri-size-font);
-  color: var(--mri-color-text-1);
+  .input {
+  &,
+  &.type-default {
+    --_color-background: var(--color-input);
+    --_color-border: var(--color-border);
+    --_color-border-bottom: var(--color-outline);
+    --_color-border-focus: var(--color-brand);
+  }
 
-  --_color-background: var(--mri-color-background-2);
-  --_color-border: transparent;
-
+  font-size: var(--text-default);
+  border-radius: var(--rounded-default);
+  min-height: var(--h-default);
+  padding: 0 var(--p-default);
+  
+  color: var(--color-heading);
   display: inline-flex;
   align-items: center;
   justify-content: start;
 
-  border-radius: var(--mri-border-radius);
-  min-height: var(--mri-size-height);
-  padding: 0 var(--mri-size-padding);
   background-color: var(--_color-background);
   border: 1px solid var(--_color-border);
+  border-bottom-color: var(--_color-border-bottom);
 
-  --_gradient-underline-focus: linear-gradient(to bottom, var(--mri-color-brand-base), var(--mri-color-brand-base));
-  --_gradient-underline-hover: linear-gradient(to bottom, var(--mri-color-border-1), var(--mri-color-border-1));
+  &::placeholder {
+    color: var(--color-outline);
+    opacity: 1;
+  }
 
-  --_background-underline-focus: var(--_gradient-underline-focus) 50% 100%/0% 2px;
-  --_background-underline-hover: var(--_gradient-underline-hover) 50% 100%/100% 0px;
+  --_icon-background-image: none;
+  --_icon-background-position: right calc(var(--p-default) - 4px) center;
+  --_icon-background-size: var(--h-icon);
+  --_icon-background: var(--_icon-background-image) var(--_icon-background-position) / var(--_icon-background-size)
+    no-repeat;
+  --_icon-padding-right: calc(var(--h-icon) + var(--p-default));
 
-  background: var(--_background-underline-focus), var(--_background-underline-hover), var(--_color-background);
+  --_focus-underline-background-position: 50% calc(100% + 2px);
+  --_focus-underline-background-size-x: 0%;
+  --_focus-underline-linear-gradient: linear-gradient(
+    to bottom,
+    var(--_color-border-focus),
+    var(--_color-border-focus)
+  );
+  --_focus-underline-background: var(--_focus-underline-linear-gradient) var(--_focus-underline-background-position) /
+    var(--_focus-underline-background-size-x) 3px;
+
+  background: var(--_focus-underline-background), var(--_icon-background), var(--_color-background);
   background-repeat: no-repeat;
 
-  transition: 0.1s ease-in;
+  transition: 0.15s ease-in;
   transition-property: background-size, background-position, border-color;
 
-  &:not(:disabled):not([readonly]):not(.mri-disabled) {
-    &:hover {
-      --_background-underline-hover: var(--_gradient-underline-hover) 50% 100%/100% 1px;
-      transition-duration: 0.15s;
-      transition-timing-function: ease-out;
-    }
-
+  &:not(:disabled):not([readonly]):not(.disabled) {
     &:focus,
     &:has(input:focus, textarea:focus, select:focus) {
-      --_background-underline-focus: var(--_gradient-underline-focus) 50% 100%/100% 2px;
+      --_focus-underline-background-size-x: 100%;
       transition-duration: 0.15s;
       transition-timing-function: ease-out;
-      border-bottom-color: transparent;
+      border-bottom-color: var(--_color-border-focus);
+    }
+  }
+  
+  &:disabled, &.disabled, &[readonly] {
+    background-color: transparent;
+    border-color: var(--color-border);
+  }
+
+  &.type-outline {
+    --_color-background: transparent;
+
+    &:focus {
+      --_color-background: var(--color-input);
     }
   }
 
-  outline: transparent solid 2px;
-
-  &.mri-appearance-outline {
-    --_color-border: var(--mri-color-border-1);
+  &.type-subtle {
+    --_color-border: transparent;
+    --_color-border-bottom: transparent;
+    --_color-background: var(--color-selected);
   }
 
-  .mri-input > & {
+  /* &.type-underline,*/
+  &.type-transparent {
+    --_color-background: transparent;
+    --_color-border: transparent;
+    padding: 2px;
+    min-height: auto;
+    border-radius: 1px;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  .input > & {
     appearance: none;
     background: none;
     border: none;
@@ -79,36 +121,38 @@ input:where(:not([type])),
   }
 }
 
-.mri-input {
+.input {
   display: inline-flex;
   align-items: center;
   justify-content: start;
   gap: 4px;
   padding: 4px;
   &:where(:has(input:first-child, textarea:first-child, select:first-child)) {
-    padding-left: var(--mri-size-padding);
+    padding-left: var(--p-default);
   }
 }
 
 input[type="number"],
 input[type="date"] {
-  font-family: var(--mri-font-family-mono);
-  font-size: var(--mri-font-family-mono-scale);
+  font-family: var(--font-mono);
+  /* font-size: var(--font-mono-scale); */
 }
 
 input[type="number"] {
-  --_size-spin-button-gap: 2px;
+  --_size-spin-btn-gap: 2px;
   padding-right: 0;
 
   &::-webkit-inner-spin-button {
-    height: calc(var(--mri-size-height) - var(--_size-spin-button-gap));
-    margin-bottom: var(--_size-spin-button-gap);
+    height: calc(var(--h-default) - var(--_size-spin-btn-gap));
+    margin-bottom: var(--_size-spin-btn-gap);
   }
 }
 
 textarea {
   padding-block: 0.5em;
-  font-family: var(--mri-font-family-sans);
+  font-family: var(--font-sans);
+  outline: none;
+
   /* resize: vertical;
   field-sizing: content;
   width: 100%; */
@@ -116,8 +160,8 @@ textarea {
 
 input[type="color"] {
   padding: 0;
-  height: var(--mri-size-height);
-  width: var(--mri-size-height);
+  height: var(--h-default);
+  width: var(--h-default);
 
   &::-webkit-color-swatch-wrapper {
     padding: 4px;
@@ -125,8 +169,14 @@ input[type="color"] {
 
   &::-webkit-color-swatch {
     border: none;
-    border-radius: calc(var(--mri-border-radius) - 4px);
+    border-radius: calc(var(--rounded-default) - 4px);
   }
+}
+
+select:where(:not(.btn)) {
+  --_icon-background-image: var(--icon-chevron-down);
+  padding-right: var(--_icon-padding-right);
+  appearance: none;
 }
 
 input[type="email"],
@@ -147,3 +197,8 @@ input[type="file"],
 select {
   cursor: pointer;
 }
+
+/* select placeholder - does not work */
+/* select:has(option:disabled[selected]) {
+  color: var(--color-outline);
+} */

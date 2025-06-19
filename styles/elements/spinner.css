@@ -1,0 +1,63 @@
+progress.spinner {
+  --_size-dimension: 20px;
+
+  &.size-xs {
+    --_size-dimension: 12px;
+  }
+  &.size-sm {
+    --_size-dimension: 16px;
+  }
+  &.size-md {
+    --_size-dimension: 20px;
+  }
+  &.size-lg {
+    --_size-dimension: 24px;
+  }
+  &.size-xl {
+    --_size-dimension: 32px;
+  }
+  &.size-2xl {
+    --_size-dimension: 40px;
+  }
+
+  --_easing-spin: ease-in-out;
+  --_duration-spin: 2.5s;
+
+  --_color-track: var(--color-border);
+  --_color-value: var(--color-brand);
+
+  appearance: none;
+  flex: 0 0 auto; 
+  width: var(--_size-dimension);
+  height: var(--_size-dimension);
+
+  overflow: hidden;
+  position: relative;
+  background: transparent;
+
+  animation: --_keyframes-progress-spin calc(var(--_duration-spin) * 0.8) linear infinite;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid var(--_color-track);
+    border-top-color: var(--_color-value);
+    border-radius: 999px;
+    animation: --_keyframes-progress-spin var(--_duration-spin) var(--_easing-spin) infinite;
+    pointer-events: none;
+  }
+  &:after {
+    border-color: transparent;
+    border-top-color: var(--_color-value);
+    animation-delay: calc(var(--_duration-spin) * 0.075);
+  }
+
+  &::-webkit-progress-inner-element,
+  &::-webkit-progress-bar,
+  &::-webkit-progress-value {
+    display: none;
+    background: transparent;
+  }
+}

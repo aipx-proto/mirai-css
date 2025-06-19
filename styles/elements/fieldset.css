@@ -1,7 +1,7 @@
 fieldset{
-    border: 1px solid var(--mri-color-border-1);
-    border-radius: var(--mri-border-radius);
-    padding: var(--mri-size-padding);
+    border: 1px solid var(--color-border);
+    border-radius: var(--rounded-default);
+    padding: var(--p-default);
     margin: 0px;
 }
 
@@ -9,6 +9,6 @@ legend {
     padding: 0 4px;
     margin: 0 -4px;
     font-size: inherit;
-    font-weight: var(--mri-font-weight-bold);
-    color: var(--mri-color-text-1);
+    font-weight: var(--font-heavyweight);
+    color: var(--color-heading);
 }

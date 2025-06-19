@@ -1,9 +1,9 @@
 [popover] {
-  border: 1px solid var(--mri-color-border-1);
-  background-color: var(--mri-color-background-1);
-  box-shadow: var(--mri-shadow-16);
-  padding: 8px 12px;
-  border-radius: var(--mri-border-radius);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-card);
+  box-shadow: var(--shadow-lg);
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3);
+  border-radius: var(--rounded-default);
   overflow: hidden;
 
   --_size-offset: 4px;
@@ -17,7 +17,7 @@
   /* justify-self: anchor; */
 }
 
-.mri-menu {
+.menu {
   /* see button.css for nested button styles */
 
   hr {
@@ -34,69 +34,69 @@
 }
 
 [popover] {
-  /* TODO?: each &.mri-position-<side> could have a more specific fallback order... */
+  /* TODO?: each &.position-<side> could have a more specific fallback order... */
   /* just goes clockwise for now */
   /* position-try-fallbacks: --_position-try-above-start, --_position-try-above-center, --_position-try-above-end,
     --_position-try-after-top, --_position-try-after-center, --_position-try-after-bottom, --_position-try-below-end,
     --_position-try-below-center, --_position-try-below-start, --_position-try-before-top, --_position-try-before-center  ,
     --_position-try-before-bottom; */
 
-  &.mri-position-force {
+  &.position-force {
     position-try-fallbacks: unset;
   }
 
   &,
-  &.mri-position-above-start {
+  &.position-above-start {
     /* default */
     position-area: var(--_position-above-start);
     margin: var(--_margin-offset-above-below);
   }
-  &.mri-position-above {
+  &.position-above {
     position-area: var(--_position-above-center);
     margin: var(--_margin-offset-above-below);
   }
-  &.mri-position-above-end {
+  &.position-above-end {
     position-area: var(--_position-above-end);
     margin: var(--_margin-offset-above-below);
   }
 
-  &.mri-menu,
-  &.mri-position-below-end {
-    /* .mri-menu default */
+  &.menu,
+  &.position-below-end {
+    /* .menu default */
     position-area: var(--_position-below-end);
     margin: var(--_margin-offset-above-below);
   }
-  &.mri-position-below {
+  &.position-below {
     position-area: var(--_position-below-center);
     margin: var(--_margin-offset-above-below);
   }
-  &.mri-position-below-start {
+  &.position-below-start {
     position-area: var(--_position-below-start);
     margin: var(--_margin-offset-above-below);
   }
 
-  &.mri-position-before-top {
+  &.position-before-top {
     position-area: var(--_position-before-top);
     margin: var(--_margin-offset-before-after);
   }
-  &.mri-position-before {
+  &.position-before {
     position-area: var(--_position-before-center);
     margin: var(--_margin-offset-before-after);
   }
-  &.mri-position-before-bottom {
+  &.position-before-bottom {
     position-area: var(--_position-before-bottom);
     margin: var(--_margin-offset-before-after);
   }
 
-  &.mri-position-after-top {
+  &.position-after-top {
     position-area: var(--_position-after-top);
     margin: var(--_margin-offset-before-after);
   }
-  &.mri-position-after {
+  &.position-after {
     position-area: var(--_position-after-center);
     margin: var(--_margin-offset-before-after);
   }
-  &.mri-position-after-bottom {
+  &.position-after-bottom {
     position-area: var(--_position-after-bottom);
     margin: var(--_margin-offset-before-after);
   }

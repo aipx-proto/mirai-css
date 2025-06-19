@@ -1,0 +1,36 @@
+@theme {
+  /* https://fluent2.microsoft.design/elevation ; */
+  /* https://react.fluentui.dev/?path=/docs/theme-shadows--docs ; */
+  /* https://tailwindcss.com/docs/box-shadow ; */
+
+  --color-shadow-overlay: oklch(0% 0 0 / 0.5);
+
+  --color-shadow-ambient: oklch(0% 0 0 / 0.12);
+  --color-shadow-key: oklch(0% 0 0 / 0.14);
+
+  /* non-standard */
+  --shadow-2xs: 0 0 1px var(--color-shadow-ambient), 0px 0px 1px 0.25px var(--color-shadow-key);
+
+  /* shadow 2 */
+  --shadow-xs: 0 0 2px var(--color-shadow-ambient), 0 1px 2px var(--color-shadow-key);
+
+  /* shadow 4 */
+  --shadow-sm: 0 0 2px var(--color-shadow-ambient), 0 2px 4px var(--color-shadow-key);
+
+  /* shadow 8 */
+  --shadow-md: 0 0 2px var(--color-shadow-ambient), 0 4px 8px var(--color-shadow-key);
+
+  /* shadow 16 */
+  --shadow-lg: 0 0 2px var(--color-shadow-ambient), 0 8px 16px var(--color-shadow-key);
+
+  /* shadow 28 */
+  --shadow-xl: 0 0 8px var(--color-shadow-ambient), 0 14px 28px var(--color-shadow-key);
+
+  /* shadow 64 */
+  --shadow-2xl: 0 0 8px var(--color-shadow-ambient), 0 32px 64px var(--color-shadow-key);
+}
+
+@variant dark {
+  --color-shadow-ambient: oklch(0% 0 0 / 0.4);
+  --color-shadow-key: oklch(0% 0 0 / 0.45);
+}

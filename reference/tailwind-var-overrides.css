@@ -1,0 +1,31 @@
+/* 
+Colors rules:
+- Write all layouts in dark theme (unless explicitly asked not to).
+- Primarily use `neutral` colors.
+- For background, primarily use `neutral-900` and `neutral-700`, but you may also use `black` and `neutral-800`.
+- For border, only use `neutral-900` or `neutral-600`.
+- For text, only use `white`, `neutral-200` or `neutral-400`.
+*/
+
+:root,
+.dark {
+  --color-black: var(--color-background-4);
+  --color-neutral-950: color-mix(in oklch, var(--color-background-4), var(--color-shell));
+  --color-neutral-900: var(--color-shell, var(--color-border-1));
+  --color-neutral-800: var(--color-control);
+  --color-neutral-700: var(--color-page);
+  --color-neutral-600: var(--color-border-1);
+  --color-neutral-500: color-mix(in oklch, var(--color-border-1), var(--color-text-3));
+  --color-neutral-400: var(--color-text-3);
+  --color-neutral-300: color-mix(in oklch, var(--color-text-3), var(--color-text-2));
+  --color-neutral-200: var(--color-text-2);
+  --color-neutral-100: color-mix(in oklch, var(--color-text-2), var(--color-text-1));
+  --color-white: var(--color-text-1);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+/* .light {
+  ...currently unsupported
+} */

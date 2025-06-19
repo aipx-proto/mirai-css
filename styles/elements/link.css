@@ -1,11 +1,17 @@
-a:where(:not(.mri-button):not(.mri-tab)) {
-  color: var(--mri-color-brand-text);
+a:where(:not(.btn):not(.tab)) {
+  --_color-text: var(--color-link);
+  --_color-hover: oklch(from var(--_color-text) calc(l - 0.2) c h);
+  --_color-active: var(--color-link);
+
+  color: var(--_color-text);
   text-decoration: none;
+
   &:hover {
-    color: oklch(from var(--mri-color-brand-text) calc(l * 0.9) c h);
+    color: var(--_color-hover);
     text-decoration: underline;
   }
+
   &:active {
-    color: var(--mri-color-brand-text);
+    color: var(--_color-active);
   }
 }

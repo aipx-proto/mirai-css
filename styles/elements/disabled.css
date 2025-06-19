@@ -1,10 +1,10 @@
-:disabled, [disabled], .mri-disabled {
+:disabled, [disabled], .disabled {
   cursor: not-allowed;
-  opacity: var(--mri-opacity-disabled);
+  opacity: var(--opacity-disabled);
 
   /* this exception doesn't work for select option:disabled */
   /* label:has(&) {
-    opacity: var(--mri-opacity-disabled);
+    opacity: var(--opacity-disabled);
   } */
   /* label:has(&) & {
     opacity: 1;

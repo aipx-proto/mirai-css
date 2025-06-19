@@ -1,61 +1,86 @@
-input[type="checkbox"].mri-switch {
+input[type="checkbox"].switch {
+  --_size-thumb: var(--h-icon);
+  --_size-padding: 2px;
+  --_size-radius: 999px;
+  --_size-dimension: calc(var(--_size-thumb) + (var(--_size-padding) * 2) + 2px);
 
-  --_color-background: var(--mri-color-background-2);
-  --_color-border: var(--mri-color-border-1);
-  --_color-checked: var(--mri-color-brand-base);
-  
-  --_size-thumb: var(--mri-size-icon);
-  --_size-offset: 2px;
-  --_size-dimension: calc(var(--_size-thumb) + (var(--_size-offset) * 2) + 2px);
+  --_color-background: var(--color-input);
+  --_color-border: var(--color-outline);
+  --_color-hover: var(--color-hover);
+  --_color-active: var(--color-active);
+  --_color-thumb: var(--color-outline);
 
-  border: 1px solid var(--mri-color-border-1);
+  /* &.type-subtle { TODO } */
+  /* &.type-outline { TODO } */
+
+  border: 1px solid var(--_color-border);
   background-color: var(--_color-background);
-  border-radius: var(--mri-border-radius-circular);
-
+  border-radius: var(--_size-radius);
   appearance: none;
-  position: relative;
   margin: 0;
-
   cursor: pointer;
-
   height: var(--_size-dimension);
   width: calc(var(--_size-dimension) * 2);
+  flex: 0 0 auto;
 
-  label & {
-    vertical-align: middle;
+  label:has(&) {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
   }
 
+  position: relative;
   &:after {
     content: "";
     display: block;
     height: var(--_size-thumb);
-    width:  var(--_size-thumb);
-    border-radius: var(--mri-border-radius-circular);
-    background-color: var(--mri-color-border-1);
+    width: var(--_size-thumb);
+    border-radius: calc(var(--_size-radius) - var(--_size-padding));
+    background-color: var(--_color-thumb);
 
     position: absolute;
-    top: var(--_size-offset);
-    left: var(--_size-offset);
-    /* margin: var(--sizeOffset); */
+    top: var(--_size-padding);
+    left: var(--_size-padding);
+    /* margin: var(--_size-padding); */
 
     transition: 0.1s ease-in-out;
     transition-property: inset, background-color;
-    
   }
 
-  &:checked {
-    background-color: var(--_color-checked);
-    border-color: var(--_color-checked);
-    &:after {
-      left: calc(100% - var(--_size-thumb) - var(--_size-offset));
-      background-color: var(--_color-background);
+  &:not(:disabled):not(.disabled) {
+    &:hover {
+      background-color: var(--_color-hover);
+      transition-duration: var(--duration-hover);
+    }
+
+    &:active {
+      background-color: var(--_color-active);
+      transition-duration: var(--duration-active);
     }
   }
 
-  &:disabled {
-    --_color-checked: var(--_color-border);
+  &:checked {
+    --_color-background: var(--color-brand);
+    --_color-hover: oklch(from var(--_color-background) calc(l - 0.1) c h);
+    --_color-active: oklch(from var(--_color-background) calc(l - 0.2) c h);
+    --_color-thumb: var(--color-input);
+    /* --_color-border: var(--color-brand); */
+    --_color-border: transparent;
+
+    /* background-color: var(--_color-checked); */
+    /* border-color: var(--_color-checked); */
+    &:after {
+      left: calc(100% - var(--_size-thumb) - var(--_size-padding));
+      /* background-color: var(--_color-background); */
+    }
+  }
+
+  &:disabled, &.disabled {
+    background-color: var(--color-selected);
+    cursor: not-allowed;
+  }
+
+  label:has(&:disabled, &.disabled) {
+    opacity: var(--opacity-disabled);
   }
 }
-
-
-

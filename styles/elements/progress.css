@@ -1,80 +1,36 @@
-progress.mri-spinner {
-  --_size-dimension: 20px;
-  --_easing-spin: ease-in-out;
-  --_duration-spin: 2.5s;
-
-  appearance: none;
-  width: var(--_size-dimension);
-  height: var(--_size-dimension);
-  flex: 0 0 auto; 
-
-  overflow: hidden;
-  position: relative;
-  background: transparent;
-
-  animation: --_keyframes-progress-spin calc(var(--_duration-spin) * 0.8) linear infinite;
-
-  &:before,
-  &:after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border: 2px solid var(--mri-color-background-2);
-    border-top-color: var(--mri-color-brand-base);
-    border-radius: var(--mri-border-radius-circular);
-    animation: --_keyframes-progress-spin var(--_duration-spin) var(--_easing-spin) infinite;
-    pointer-events: none;
-  }
-  &:after {
-    border-color: transparent;
-    border-top-color: var(--mri-color-brand-base);
-    animation-delay: calc(var(--_duration-spin) * 0.075);
-  }
-
-  &::-webkit-progress-inner-element,
-  &::-webkit-progress-bar,
-  &::-webkit-progress-value {
-    display: none;
-    background: transparent;
-  }
-}
-
-progress:where(:not(.mri-spinner)),
+progress:where(:not(.spinner)),
 meter {
   --_size-height: 2px;
+  --_color-track: var(--color-border);
+  --_color-value: var(--color-brand);
+
   appearance: none;
   width: 100%;
   height: var(--_size-height);
-  border-radius: var(--mri-border-radiusRound);
-  background: var(--mri-color-background-2);
+  border-radius: var(--rounded-defaultRound);
+  background-color: var(--_color-track);
   overflow: hidden;
 
-  &.mri-size-small {
+  &.size-sm {
     --_size-height: 1px;
   }
-  &.mri-size-medium {
+  &.size-md {
     --_size-height: 2px;
   }
-  &.mri-size-large {
+  &.size-lg {
     --_size-height: 4px;
-  }
-
-  &.mri-shape-square {
-    border-radius: 0;
   }
 }
 
-progress:where(:not(.mri-spinner)):indeterminate {
-  /* --_color-brand-transparent: color-mix(in srgb, var(--mri-color-brand-base) 0%, transparent); */
-  --_color-brand-transparent: oklch(from var(--mri-color-brand-base) l c h / 0);
-  --_color-brand: var(--mri-color-brand-base);
+progress:where(:not(.spinner)):indeterminate {
+  --_color-value-transparent: oklch(from var(--_color-value) l c h / 0);
 
   background-image: linear-gradient(
     to right,
-    var(--_color-brand-transparent) 0%,
-    var(--_color-brand) 40%,
-    var(--_color-brand) 60%,
-    var(--_color-brand-transparent) 100%
+    var(--_color-value-transparent) 0%,
+    var(--_color-value) 40%,
+    var(--_color-value) 60%,
+    var(--_color-value-transparent) 100%
   );
   background-size: 30% 100%;
   background-repeat: no-repeat;
@@ -93,12 +49,8 @@ progress:where(:not(.mri-spinner)):indeterminate {
   height: var(--_size-height);
 }
 ::-webkit-progress-value {
-  background: var(--mri-color-brand-base);
+  background: var(--_color-value);
 }
-
-/* ::-webkit-meter-inner-element {
-  height: 100%;
-} */
 
 ::-webkit-meter-optimum-value {
   /* intent-success */
@@ -124,7 +76,7 @@ progress:where(:not(.mri-spinner)):indeterminate {
 ::-moz-progress-bar
 ::-webkit-progress-bar
 ::-webkit-progress-value
-::-webkit-progress-inner-element */
+::-webkit-progress-inner-element {} */
 
 @keyframes --_keyframes-progress-indeterminate {
   0% {

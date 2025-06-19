@@ -1,18 +1,25 @@
-:root, .mri-theme-dark, .dark {
-  --mri-icon-check: url('data:image/svg+xml,<svg style="fill:black;" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M9.76 3.2c.3.29.32.76.04 1.06l-4.25 4.5a.75.75 0 0 1-1.08.02L2.22 6.53a.75.75 0 0 1 1.06-1.06l1.7 1.7L8.7 3.24a.75.75 0 0 1 1.06-.04Z"></path></svg>');
-  --mri-icon-chevron-right: url('data:image/svg+xml,<svg style="fill:white;" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M7.65 4.15c.2-.2.5-.2.7 0l5.49 5.46c.21.22.21.57 0 .78l-5.49 5.46a.5.5 0 0 1-.7-.7L12.8 10 7.65 4.85a.5.5 0 0 1 0-.7Z"></path></svg>');
-  --mri-icon-chevron-down: url('data:image/svg+xml,<svg style="fill:white;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.21 8.46C4.51 8.17 4.98 8.17 5.28 8.46L12 15.18L18.71 8.46C19.01 8.17 19.48 8.17 19.78 8.46C20.07 8.76 20.07 9.23 19.78 9.53L12.53 16.78C12.23 17.07 11.76 17.07 11.46 16.78L4.21 9.53C3.92 9.23 3.92 8.76 4.21 8.46Z"></path></svg>');
+@theme {
+  --icon-check: url('data:image/svg+xml,<svg style="fill:white;" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M9.76 3.2c.3.29.32.76.04 1.06l-4.25 4.5a.75.75 0 0 1-1.08.02L2.22 6.53a.75.75 0 0 1 1.06-1.06l1.7 1.7L8.7 3.24a.75.75 0 0 1 1.06-.04Z"></path></svg>');
+  --icon-chevron-down: url('data:image/svg+xml,<svg style="fill:black;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.21 8.46C4.51 8.17 4.98 8.17 5.28 8.46L12 15.18L18.71 8.46C19.01 8.17 19.48 8.17 19.78 8.46C20.07 8.76 20.07 9.23 19.78 9.53L12.53 16.78C12.23 17.07 11.76 17.07 11.46 16.78L4.21 9.53C3.92 9.23 3.92 8.76 4.21 8.46Z"></path></svg>');
 }
 
-.mri-theme-light, .light {
-  --mri-icon-check: url('data:image/svg+xml,<svg style="fill:white;" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M9.76 3.2c.3.29.32.76.04 1.06l-4.25 4.5a.75.75 0 0 1-1.08.02L2.22 6.53a.75.75 0 0 1 1.06-1.06l1.7 1.7L8.7 3.24a.75.75 0 0 1 1.06-.04Z"></path></svg>');
-  --mri-icon-chevron-right: url('data:image/svg+xml,<svg style="fill:black;" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M7.65 4.15c.2-.2.5-.2.7 0l5.49 5.46c.21.22.21.57 0 .78l-5.49 5.46a.5.5 0 0 1-.7-.7L12.8 10 7.65 4.85a.5.5 0 0 1 0-.7Z"></path></svg>');
-  --mri-icon-chevron-down: url('data:image/svg+xml,<svg style="fill:black;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.21 8.46C4.51 8.17 4.98 8.17 5.28 8.46L12 15.18L18.71 8.46C19.01 8.17 19.48 8.17 19.78 8.46C20.07 8.76 20.07 9.23 19.78 9.53L12.53 16.78C12.23 17.07 11.76 17.07 11.46 16.78L4.21 9.53C3.92 9.23 3.92 8.76 4.21 8.46Z"></path></svg>');
+@variant dark {
+  --icon-check: url('data:image/svg+xml,<svg style="fill:black;" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M9.76 3.2c.3.29.32.76.04 1.06l-4.25 4.5a.75.75 0 0 1-1.08.02L2.22 6.53a.75.75 0 0 1 1.06-1.06l1.7 1.7L8.7 3.24a.75.75 0 0 1 1.06-.04Z"></path></svg>');
+  --icon-chevron-down: url('data:image/svg+xml,<svg style="fill:white;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.21 8.46C4.51 8.17 4.98 8.17 5.28 8.46L12 15.18L18.71 8.46C19.01 8.17 19.48 8.17 19.78 8.46C20.07 8.76 20.07 9.23 19.78 9.53L12.53 16.78C12.23 17.07 11.76 17.07 11.46 16.78L4.21 9.53C3.92 9.23 3.92 8.76 4.21 8.46Z"></path></svg>');
 }
 
-.mri-emojicon{
-  height: var(--mri-sizeIcon);
-  width: var(--mri-sizeIcon);
+.icon {
+  height: var(--h-icon);
+  width: var(--h-icon);
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  fill: currentColor;
+}
+
+.emojicon{
   font-style: normal;
   filter: grayscale(1);
 }

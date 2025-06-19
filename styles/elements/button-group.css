@@ -1,8 +1,6 @@
-.mri-control-group {
+.btn-group {
   display: flex;
   gap: 1px;
-
-  /* TODO: exception for mri-appearance-primary */
 
   & > :not(:first-child):not(:last-child) {
     border-radius: 0;
@@ -20,9 +18,10 @@
 
   /* applies to button.css and input.css */
   /* buttons and inputs with outline should share border rather than have a gap */
-  & > :not(:first-child) {
-    &:not([class*="mri-appearance-"]),
-    &.mri-appearance-outline {
+  &:not([class*="type-"]),
+  &.type-default,
+  &.type-outline {
+    & > :not(:first-child) {
       margin-left: -2px;
     }
   }

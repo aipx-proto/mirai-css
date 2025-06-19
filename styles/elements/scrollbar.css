@@ -1,4 +1,4 @@
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--mri-color-text-3) transparent;
+  scrollbar-color: var(--color-muted) transparent;
 }

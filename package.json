@@ -9,13 +9,15 @@
   },
   "license": "ISC",
   "scripts": {
-    "dev": "npm run build -- --watch",
-    "build": "postcss styles/index.css -o styles/mirai.build.css"
+    "dev": "concurrently \"npm run pre-tailwind -- --watch\" \"npm run tailwind -- --watch\"",
+    "tailwind": "npx @tailwindcss/cli -i ./styles/index.css -o ./build/fluent.css",
+    "pre-tailwind": "node scripts/extract-custom-properties.js styles/**/*.css build/custom-properties.css **/fluent*.css",
+    "build": "npm run pre-tailwind && npm run tailwind"
   },
   "devDependencies": {
-    "postcss": "^8.5.3",
-    "postcss-cli": "^11.0.1",
-    "postcss-import": "^16.1.0",
-    "postcss-url": "^10.1.3"
+    "@tailwindcss/cli": "^4.1.10",
+    "tailwindcss": "^4.1.10",
+    "glob": "^11.0.3",
+    "concurrently": "^9.1.2"
   }
 }

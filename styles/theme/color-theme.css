@@ -1,0 +1,55 @@
+@theme {
+  --color-card: var(--color-white);
+  --color-panel: var(--color-neutral-50);
+  --color-page: var(--color-neutral-100);
+
+  --color-border: var(--color-neutral-300);
+  --color-outline: var(--color-neutral-500);
+
+  --color-muted: var(--color-neutral-600);
+  --color-body: var(--color-neutral-800);
+  --color-heading: var(--color-neutral-900);
+
+  --color-link: var(--color-blue-500);
+  --color-brand: var(--color-blue-500);
+  /* this complex color function produces either black or white based on the brand color */
+  --color-contrast-brand: hwb(
+    from oklch(from var(--color-brand) l 0 0) h calc(((b - 50) * 999)) calc(((w - 50) * 999))
+  );
+
+  --color-input: var(--color-white);
+  --color-selected: oklch(0 0 0 / 0.05);
+  --color-hover: oklch(0 0 0 / 0.065);
+  --color-active: oklch(0 0 0 / 0.12);
+
+  --opacity-disabled: 0.6;
+}
+
+@variant dark {
+  color-scheme: dark;
+
+  --color-card: var(--color-neutral-800);
+  --color-panel: var(--color-neutral-900);
+  --color-page: var(--color-neutral-950);
+
+  --color-border: var(--color-neutral-700);
+  --color-outline: var(--color-neutral-500);
+
+  --color-muted: var(--color-neutral-500);
+  --color-body: var(--color-neutral-300);
+  --color-heading: var(--color-white);
+
+  --color-link: var(--color-blue-400);
+  --color-brand: var(--color-blue-500);
+  /* this complex color function produces either black or white based on the brand color */
+  --color-contrast-brand: hwb(
+    from oklch(from var(--color-brand) l 0 0) h calc(((b - 50) * 999)) calc(((w - 50) * 999))
+  );
+
+  --color-input: var(--color-neutral-800);
+  --color-selected: oklch(0 0 0 / 0.4);
+  --color-hover: oklch(0 0 0 / 0.5);
+  --color-active: oklch(0 0 0 / 0.6);
+
+  --opacity-disabled: 0.6;
+}

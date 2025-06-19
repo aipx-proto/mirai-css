@@ -2,15 +2,35 @@ input[type="range"] {
   --_size-thumb: 20px;
   --_size-track: 4px;
 
+  &.size-sm {
+    --_size-thumb: 16px;
+    --_size-track: 2px;
+  }
+  &.size-md {
+    --_size-thumb: 20px;
+    --_size-track: 4px;
+  }
+  &.size-lg {
+    --_size-thumb: 24px;
+    --_size-track: 6px;
+  }
+
+  --_color-track: var(--color-outline);
+  --_color-border: var(--color-border);
+  --_color-thumb: var(--color-brand);
+  --_color-hover: oklch(from var(--color-brand) calc(l - 0.1) c h);
+  --_color-active: oklch(from var(--color-brand) calc(l - 0.2) c h);
+
   appearance: none;
-  background: transparent;
+  background-color: transparent;
   padding: calc(var(--_size-thumb) / 2 - var(--_size-track) / 2) 0;
   margin: 0;
+  outline: none !important;
 
   &::-webkit-slider-container {
     height: var(--_size-track);
-    background: var(--mri-color-border-1);
-    border-radius: var(--mri-border-radius-circular);
+    background-color: var(--_color-track);
+    border-radius: 999px;
   }
 
   /* &::-webkit-slider-runnable-track {} */
@@ -20,10 +40,39 @@ input[type="range"] {
     appearance: none;
     width: var(--_size-thumb);
     height: var(--_size-thumb);
-    border: 1px solid var(--mri-color-border-1);
-    border-radius: var(--mri-border-radius-circular);
+    border: 1px solid var(--_color-border);
+    border-radius: 999px;
     cursor: ew-resize;
-    background: var(--mri-color-brand-base);
-    box-shadow: inset 0 0 0 3px var(--mri-color-background-1);
+    background-color: var(--_color-thumb);
+    box-shadow: inset 0 0 0 3px var(--color-input);
+    transition: background-color var(--duration-rest) linear;
+  }
+
+  &:not(:disabled):not(.disabled) {
+    &:hover {
+      transition-duration: var(--duration-hover);
+      --_color-thumb: var(--_color-hover);
+    }
+    &:active {
+      transition-duration: var(--duration-hover);
+      --_color-thumb: var(--_color-active);
+    }
+  }
+
+  &:disabled, &.disabled {
+    &::-webkit-slider-container {
+      background-color: var(--color-border);
+    }
+    &::-webkit-slider-thumb{
+      cursor: not-allowed;
+      background-color: var(--color-outline);
+    }
+  }
+
+  &:focus-visible {
+    &::-webkit-slider-thumb {
+      outline: 2px solid var(--color-body);
+      outline-offset: -1px;
+    }
   }
 }

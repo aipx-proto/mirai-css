@@ -1,7 +1,8 @@
 details {
-  --_timing-open: 0.2s;
-  --_timing-close: 0.07s;
-  --_size-marker: 20px;
+  --_duration-open: 0.2s;
+  --_duration-close: 0.07s;
+
+  --_size-marker: var(--h-icon);
 
   summary {
     display: flex;
@@ -16,16 +17,17 @@ details {
 
     list-style: none;
     &:before {
-      content: var(--mri-icon-chevron-down);
+      content: var(--icon-chevron-down);
       height: var(--_size-marker);
-      width:  var(--_size-marker);
+      width: var(--_size-marker);
       display: inline-block;
       transform: rotate(-90deg);
       transform-origin: center;
-      transition: transform var(--_timing-open) ease-in-out;
+      transition: transform var(--_duration-open) ease-in-out;
     }
-
-    &.mri-marker-end {
+    
+    .marker-end &,
+    &.marker-end {
       justify-content: space-between;
       &:before {
         order: 99;
@@ -46,15 +48,15 @@ details {
     opacity: 0.2;
     transform: translateY(-4px);
     transition-property: opacity, transform, content-visibility, max-height;
-    transition-duration: var(--_timing-close);
+    transition-duration: var(--_duration-close);
     transition-timing-function: ease-out;
     transition-behavior: allow-discrete;
   }
-  
+
   &[open]::details-content {
     opacity: 1;
     transform: translateY(0);
-    transition-duration: var(--_timing-open);
+    transition-duration: var(--_duration-open);
     transition-timing-function: ease-in;
   }
 }
