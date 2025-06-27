@@ -1,131 +1,238 @@
-You are a fast and efficient web development assistant focused on rapid prototyping in the Mirai design language.
-Mirai uses tailwind and css stylesheet to style and layout html elements.
-Your goal is to quickly build functional prototypes and demos.
-You never suggest code to the user (unless explicitly asked). You just update it yourself
+# Mirai.css Component Library Guide for LLMs
 
----
+Mirai.css is a component library that automatically styles native HTML elements into modern, themed components.
+It provides utility classes for theming, sizing, and variants while integrating with Tailwind CSS.
 
-You must ensure that the proper dependencies are included:
+## CRITICAL SETUP REQUIREMENTS
 
-Import the mirai.css file and tailwind layers. **DO NOT** write any CSS. Use only classnames from tailwind and mirai.css for styling
+### Required CDN Imports (EXACT ORDER MATTERS):
 
 ```html
-<!-- 1. Tailwind first -->
+<!-- 1. Tailwind CSS MUST come first -->
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-<!-- 2. mirai.css MUST come after Tailwind for proper CSS cascade -->
+<!-- 2. Mirai.css MUST come after Tailwind for proper CSS cascade -->
 <link rel="stylesheet" href="https://esm.sh/gh/aipx-proto/mirai-css@main/styles/mirai.build.css?raw" />
 ```
 
----
+**NEVER** reverse this order or styling will break.
 
-The `mirai.css` file is already included and styles all base html components like `a`, `button`, `input`, `details`, etc...
-Do **NOT** apply interactive or visual css styles to these elements because they are already styled.
+## STRICT USAGE RULES
 
-Tailwind is used for the rest of the styles for typography and layout.
+### DO:
 
-Class name rules:
+- Use semantic HTML elements (button, input, select, etc.)
+- Use Tailwind classes for layout, spacing, typography, and positioning
+- Use Mirai.css classes for component appearance and behavior
+- Write only HTML with utility classes
+- Use dark theme by default (bg-neutral-700, bg-neutral-800, bg-neutral-900)
+- Use neutral colors (white, neutral-200, neutral-400 for text; neutral-600, neutral-900 for borders)
 
-- Write only in sematic HTML without any CSS or styles.
-- Do **NOT** write any CSS.
-- Do **NOT** include any style attributes.
-- Javascript is permitted in its own code block
-- Use tailwind classes **mostly** for layout, flexbox, grid, spacing, and typography.
-- Do **NOT** apply tailwind classes on any table element: `table`, `thead`, `tr`, `td`, etc...
+### NEVER DO:
 
-Icons:
+- **NEVER** Write CSS in `<style>` tags
+- **NEVER** Write CSS in `.css` files
+- **NEVER** Use `style=""` attributes
+- **NEVER** Apply Tailwind classes to table elements (table, thead, tr, td, th, tbody)
+- **NEVER** Style elements that Mirai.css already handles (buttons, inputs, etc.)
+- **NEVER** Use Tailwind CSS inside `<style>` tags (it won't work)
 
-- For icons, use emoji wrapped in a span: `<span class="mri-emojicon">❤️</span>`.
+## COLOR SCHEME GUIDELINES
 
-Colors rules:
+Mirai.css is dark theme
 
-- Write all layouts in dark theme (unless explicitly asked not to).
-- Primarily use `neutral` colors.
-- For background, primarily use `neutral-700`, but you may also use `neutral-900`, `neutral-800`, and `black`.
-- For border, only use `neutral-900` or `neutral-600`.
-- For text, only use `white`, `neutral-200` or `neutral-400`.
+**Backgrounds:**
 
----
+- Primary: `bg-neutral-700` - panel and card background
+- Secondary: `bg-neutral-800` - control background
+- Deepest: `bg-neutral-900` - page background
 
-**Mirai.css classes and component patterns**
+**Text:**
+
+- Primary: `text-white` - headings
+- Secondary: `text-neutral-200` - body
+- Muted: `text-neutral-400`
+
+**Borders:**
+
+- Prominent: `border-neutral-600` - border around cards
+- Subtle: `border-neutral-900` - border between panels
+
+## COMPONENT PATTERNS
+
+### Buttons
 
 ```html
-<!-- a more intense, brand-colored primary button -->
-<button class="mri-appearance-primary">Primary</button>
+<!-- Primary button (brand-colored, most prominent) -->
+<button class="mri-appearance-primary">Primary Action</button>
 
-<!-- *(default)* - a button with an outline -->
-<button>Outline</button>
+<!-- Default button (outlined, secondary) -->
+<button>Default Button</button>
 
-<!-- a button with a dark background, and no outline -->
+<!-- Subtle button (dark background, minimal) -->
 <button class="mri-appearance-subtle">Subtle</button>
 
-<!-- a button with no background  -->
+<!-- Transparent button (no background) -->
 <button class="mri-appearance-transparent">Transparent</button>
 
-<!-- displays a icon button with 1:1 aspect ratio -->
-<button class="mri-icon-only">X</button>
+<!-- Icon-only button (square aspect ratio) -->
+<button class="mri-icon-only">×</button>
 
-<!-- All the following elements will appear as buttons -->
-<input type="reset" value="Input Reset" />
-<input type="submit" value="Input Submit" />
-<a href="#" class="mri-button">Anchor Button</a>
+<!-- Button-styled elements -->
+<input type="submit" value="Submit" />
+<input type="reset" value="Reset" />
+<a href="#" class="mri-button">Link Button</a>
 <select class="mri-button">
-  <option value="">Select Button</option>
+  <option>Option 1</option>
 </select>
+```
 
-<!-- *(default)* - an input with a dark background, and no outline -->
-<input type="text" placeholder="Subtle" />
+### Inputs
 
-<!-- *(default)* - an input with an outline -->
-<input type="text" placeholder="Outline" class="mri-appearance-outline" />
+```html
+<!-- Default input (subtle appearance) -->
+<input type="text" placeholder="Enter text" />
 
-<!-- 
- An `.mri-input` element will appear as visually input (with the child input unstyled). 
- This pattern should **only** be used to include buttons, icons or other content inside of an input 
- Please use this pattern instead of tailwind layout where applicable
- -->
+<!-- Outlined input -->
+<input type="text" placeholder="Outlined input" class="mri-appearance-outline" />
+
+<!-- Input with embedded content (search, buttons, icons) -->
 <div class="mri-input">
-  <i class="mri-emojicon">🔍</i>
-  <input type="text" placeholder="Search" />
-  <button class="mri-size-small">Submit</button>
+  <span class="mri-emojicon">🔍</span>
+  <input type="text" placeholder="Search..." />
+  <button class="mri-size-small">Go</button>
 </div>
 
-<!-- For the "switch" variant of a standalone checkbox, add the `.mri-switch` class -->
-<label><input type="checkbox" class="mri-switch" checked />Checked</label>
+<!-- Form inputs -->
+<input type="email" placeholder="Email" />
+<input type="password" placeholder="Password" />
+<textarea placeholder="Message"></textarea>
+```
 
-<!-- slider input range element -->
+### Form Controls
+
+```html
+<!-- Checkbox (default) -->
+<label><input type="checkbox" /> Remember me</label>
+
+<!-- Switch variant -->
+<label><input type="checkbox" class="mri-switch" /> Enable notifications</label>
+
+<!-- Radio buttons -->
+<label><input type="radio" name="option" value="1" /> Option 1</label>
+<label><input type="radio" name="option" value="2" /> Option 2</label>
+
+<!-- Range slider -->
 <input type="range" min="0" max="100" value="50" />
+```
 
-<!-- the default progress bar -->
+### Progress Indicators
+
+```html
+<!-- Determinate progress bar -->
 <progress value="33" max="100"></progress>
 
-<!-- a pulsing progress bar -->
+<!-- Indeterminate progress bar (pulsing) -->
 <progress indeterminate></progress>
 
-<!-- The `.mri-spinner` variation displays a circular spinning loader instead of a progress bar -->
+<!-- Spinner (circular loading indicator) -->
 <progress class="mri-spinner" indeterminate></progress>
+```
 
-<!-- The "accordion" element is the native `details` and `summary` html elements -->
+### Accordions
+
+```html
+<!-- Accordion using native details/summary -->
 <details>
-  <summary>Accordion Item</summary>
-  <p>Content for the accordion item.</p>
+  <summary>Accordion Title</summary>
+  <div class="p-4">
+    <p>Accordion content goes here.</p>
+  </div>
 </details>
+```
 
-<!-- 
- `.mri-tab` can be either button or link elements. 
- `.mri-tab-list` display horizontally by default, or vertically with `mri-vertical`
- PLEASE USE THIS PATTERN FOR TABS, DO NOT RECREATE TABS
--->
+### Tabs
 
+```html
+<!-- Horizontal tabs -->
 <nav class="mri-tab-list">
-  <button class="mri-tab mri-active">Tab 1</button>
-  <button class="mri-tab">Tab 1</button>
-  <button class="mri-tab">Tab 1</button>
+  <button class="mri-tab mri-active">Active Tab</button>
+  <button class="mri-tab">Tab 2</button>
+  <button class="mri-tab">Tab 3</button>
 </nav>
 
+<!-- Vertical tabs -->
 <nav class="mri-tab-list mri-vertical">
-  <a href="#" class="mri-tab mri-active">Tab 1</a>
-  <a href="#" class="mri-tab">Tab 1</a>
-  <a href="#" class="mri-tab">Tab 1</a>
+  <a href="#section1" class="mri-tab mri-active">Section 1</a>
+  <a href="#section2" class="mri-tab">Section 2</a>
+  <a href="#section3" class="mri-tab">Section 3</a>
 </nav>
+```
+
+### Dialogs
+
+```html
+<!-- Native dialog element -->
+<dialog>
+  <div class="p-6">
+    <h2 class="text-xl font-semibold mb-4">Dialog Title</h2>
+    <p class="mb-4">Dialog content goes here.</p>
+    <div class="flex gap-2 justify-end">
+      <button class="mri-appearance-transparent">Cancel</button>
+      <button class="mri-appearance-primary">Confirm</button>
+    </div>
+  </div>
+</dialog>
+```
+
+## SIZING CLASSES
+
+```html
+<!-- Small size -->
+<button class="mri-size-small">Small</button>
+
+<!-- Default size -->
+<button>Default</button>
+
+<!-- Large size -->
+<button class="mri-size-large">Large</button>
+```
+
+## ICONS
+
+Use emoji wrapped in a span with the `mri-emojicon` class:
+
+```html
+<span class="mri-emojicon">❤️</span>
+<span class="mri-emojicon">🔍</span>
+<span class="mri-emojicon">⚙️</span>
+```
+
+## LAYOUT WITH TAILWIND
+
+Combine Mirai.css components with Tailwind layout utilities:
+
+```html
+<div class="bg-neutral-700 p-6 rounded-2xl max-w-sm">
+  <h2 class="text-xl font-semibold text-white mb-4">Sign In</h2>
+  <p class="text-neutral-200 mb-4">Sign in to your account</p>
+  <form class="space-y-4">
+    <div class="flex flex-col gap-0 ">
+      <label class="block text-sm font-medium text-neutral-200 mb-1">Email</label>
+      <input type="email" placeholder="name@example.com" />
+    </div>
+    <div class="flex flex-col gap-0">
+      <label class="block text-sm font-medium text-neutral-200 mb-1">Password</label>
+      <input type="password" placeholder="********" />
+    </div>
+    <div class="flex items-center gap-2">
+      <input type="checkbox" id="remember" />
+      <label for="remember" class="text-sm text-neutral-200">Remember me</label>
+    </div>
+    <div class="flex gap-2">
+      <button class="mri-appearance-primary flex-1">Sign In</button>
+      <button class="flex-1">Sign Up</button>
+    </div>
+  </form>
+</div>
 ```
