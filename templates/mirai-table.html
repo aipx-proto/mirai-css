@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="https://ai.azure.com/assets/aistudio-af17733a.svg" />
+  <!-- 1. Tailwind first -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- 2. Fluent.css MUST come after Tailwind for proper CSS cascade -->
+  <link rel="stylesheet" href="https://esm.sh/gh/aipx-proto/mirai-css@main/styles/mirai.build.css?raw" />
+  <script src="https://esm.sh/vibe-icon@latest" type="module"></script>
+  <style id="injected-css">
+    /*! DON'T WRITE CSS - USE TAILWIND CLASSES  */
+  </style>
+</head>
+
+<body>
+  <div class="h-screen bg-neutral-900 flex flex-col overflow-hidden">
+    <!-- Top nav -->
+    <header class="flex items-center justify-between h-12 px-4">
+      <div class="flex items-center gap-4 text-sm">
+        <span>
+          <svg fill="currentColor" height="20" role="presentation" viewBox="0 0 20 20" width="20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M18.3515 6.60197C18.3515 6.34706 18.1451 6.15283 17.9024 6.15283H15.778C14.2849 6.15283 13.071 7.36673 13.071 8.85983V13.3513H15.6445C17.1376 13.3513 18.3515 12.1374 18.3515 10.6443V6.60197Z">
+            </path>
+            <path clip-rule="evenodd"
+              d="M12.3185 1.00586L12.2457 15.3906C12.2457 17.3814 10.6312 18.9959 8.64039 18.9959H2.09747C1.78186 18.9959 1.5755 18.6924 1.67261 18.401L6.91666 3.42152C7.42649 1.97698 8.78606 1.00586 10.3156 1.00586H12.3185Z"
+              fill-rule="evenodd"></path>
+          </svg>
+        </span>
+        <span class="text-white font-semibold">Azure AI Foundry</span>
+        <span class="text-neutral-600">/</span>
+        <span>project-name123</span>
+        <span class="text-neutral-600">/</span>
+        <span class="text-white font-semibold">Parent page 123</span>
+      </div>
+
+      <!-- Responsive search input / icon -->
+      <div class="hidden lg:flex mri-input mri-appearance-outline rounded-full">
+        <vibe-icon name="search"></vibe-icon>
+        <input type="text" placeholder="Search with AI" />
+        <span class="text-neutral-400 text-xs mx-2">⌘ K</span>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <nav class="hidden lg:flex items-center gap-4 text-neutral-400 text-sm">
+          <a href="#" class="text-neutral-200">Home</a>
+          <a href="#" class="text-neutral-200">Explore</a>
+          <a href="#" class="text-neutral-200">Science</a>
+          <a href="#" class="text-neutral-200">Labs</a>
+        </nav>
+        <button class="lg:hidden mri-icon-only mri-appearance-transparent rounded-full" aria-label="Search">
+          <vibe-icon name="search"></vibe-icon>
+        </button>
+        <button class="lg:hidden mri-icon-only mri-appearance-transparent rounded-full" aria-label="Search">
+          <vibe-icon name="more-horizontal"></vibe-icon>
+        </button>
+        <span class="text-neutral-600">|</span>
+        <button class="mri-icon-only mri-appearance-transparent" title="Theme">
+          <vibe-icon name="weather-moon"></vibe-icon>
+        </button>
+        <button class="mri-icon-only mri-appearance-transparent" title="Settings">
+          <vibe-icon name="settings"></vibe-icon>
+        </button>
+        <button class="mri-icon-only mri-appearance-transparent" title="Profile">
+          <vibe-icon name="person"></vibe-icon>
+        </button>
+      </div>
+    </header>
+    <main class="flex flex-1 overflow-hidden">
+      <!-- Sidebar -->
+      <aside class="bg-neutral-700 flex flex-col p-2 rounded-tr-2xl border-r-2 border-neutral-900 overflow-y-auto">
+        <nav class="icon-only mri-tab-list mri-appearance-subtle mri-vertical flex-1">
+          <a href="#" class="mri-tab mri-active flex items-center gap-2"><vibe-icon
+              name="bot"></vibe-icon><span>Agents</span></a>
+          <a href="#" class="mri-tab flex items-center gap-2"><vibe-icon
+              name="archive"></vibe-icon><span>Models</span></a>
+          <a href="#" class="mri-tab flex items-center gap-2"><vibe-icon
+              name="shapes"></vibe-icon><span>Workflow</span></a>
+          <a href="#" class="mri-tab flex items-center gap-2"><vibe-icon
+              name="data-bar-vertical"></vibe-icon><span>Reports</span></a>
+          <a href="#" class="mri-tab flex items-center gap-2"><vibe-icon
+              name="database"></vibe-icon><span>Knowledge</span></a>
+        </nav>
+        <div class="flex items-center justify-end text-neutral-600 text-xs">
+          <button class="mri-icon-only mri-appearance-transparent rounded-xl" title="Collapse Sidebar">
+            <vibe-icon name="arrow-previous"></vibe-icon>
+          </button>
+        </div>
+      </aside>
+      <!-- Main content -->
+      <section class="flex-1 flex flex-col bg-neutral-700 rounded-tl-2xl overflow-hidden">
+        <!-- Page header -->
+        <div class="flex flex-col items-center justify-between px-6 pt-6 border-b border-neutral-900">
+          <div class="flex items-center gap-3 justify-between w-full">
+            <h1 class="text-white text-lg font-semibold flex items-center gap-2">
+              <span class="bg-black rounded-full h-8 w-8 flex items-center justify-center">
+                <vibe-icon name="bot"></vibe-icon>
+              </span>
+              <span class="text-white text-2xl font-semibold">Title</span>
+            </h1>
+            <div class="flex items-center gap-2">
+              <button title="Button 2"><vibe-icon name="circle"></vibe-icon>Button</button>
+              <button class="mri-appearance-primary">Primary</button>
+            </div>
+          </div>
+          <nav class="mri-tab-list w-full">
+            <button class="mri-tab mri-active">First tab</button>
+            <button class="mri-tab">Second tab</button>
+            <button class="mri-tab">Third tab</button>
+            <button class="mri-tab">Fourth tab</button>
+            <button class="mri-tab">Fifth tab</button>
+          </nav>
+        </div>
+        <!-- Content split -->
+        <div class="flex-1 flex flex-col px-6 pt-6 pb-8 overflow-auto">
+          <!-- Search and filters + pagination -->
+          <div class="flex items-center justify-between gap-3 mb-4">
+            <div class="flex items-center gap-3">
+              <div class="mri-input w-72">
+                <vibe-icon name="search"></vibe-icon>
+                <input type="text" placeholder="Search" />
+              </div>
+              <button class="mri-appearance-outline">Audio</button>
+              <button class="mri-appearance-outline">Text</button>
+              <button class="mri-appearance-outline">Video</button>
+              <button class="mri-appearance-outline">Translation</button>
+              <button class="mri-appearance-outline">Data</button>
+              <button class="mri-appearance-transparent mri-icon-only"><vibe-icon name="more-horizontal"></vibe-icon></button>
+            </div>
+            <div class="flex items-center gap-1 text-neutral-400">
+              <button class="mri-appearance-transparent">
+                <vibe-icon name="chevron-left"></vibe-icon>
+                Prev
+              </button>
+              <button class="mri-appearance-transparent">
+                Next
+                <vibe-icon name="chevron-right"></vibe-icon>
+              </button>
+            </div>
+          </div>
+          <!-- Table -->
+          <div class="flex-1 flex flex-col">
+            <div class="flex-1 overflow-auto">
+              <table class="table-auto">
+                <thead>
+                  <tr>
+                    <th class="w-0"></th>
+                    <th>Name <vibe-icon class="text-neutral-500" name="arrow-down" size="12">↓</span></th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Deployed</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><input type="radio" name="entity" /></td>
+                    <td><a href="#" class="underline">SupportBot v2</a></td>
+                    <td>Customer support LLM agent for live chat</td>
+                    <td>Active</td>
+                    <td>2024-06-01</td>
+                  </tr>
+                  <tr>
+                    <td><input type="radio" name="entity" /></td>
+                    <td><a href="#" class="underline">ResearchGPT</a></td>
+                    <td>Automated research assistant for R&amp;D</td>
+                    <td>Active</td>
+                    <td>2024-05-28</td>
+                  </tr>
+                  <tr>
+                    <td><input type="radio" name="entity" /></td>
+                    <td><a href="#" class="underline">CodeGenie</a></td>
+                    <td>Code generation agent for dev teams</td>
+                    <td>Paused</td>
+                    <td>2024-05-15</td>
+                  </tr>
+                  <tr>
+                    <td><input type="radio" name="entity" /></td>
+                    <td><a href="#" class="underline">SummarizerX</a></td>
+                    <td>Document summarization LLM agent</td>
+                    <td>Active</td>
+                    <td>2024-05-10</td>
+                  </tr>
+                  <tr>
+                    <td><input type="radio" name="entity" /></td>
+                    <td><a href="#" class="underline">DataQA</a></td>
+                    <td>Data quality analysis agent</td>
+                    <td>Inactive</td>
+                    <td>2024-04-30</td>
+                  </tr>
+                  <tr>
+                    <td><input type="radio" name="entity" /></td>
+                    <td><a href="#" class="underline">LegalBot</a></td>
+                    <td>Legal document review LLM agent</td>
+                    <td>Active</td>
+                    <td>2024-04-20</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script type="module" id="injected-js">
+    // Theme toggle: toggles .light on <html> when the theme button is clicked
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const themeBtn = document.querySelector('button[title="Theme"]');
+      if (themeBtn) {
+        themeBtn.addEventListener("click", () => {
+          document.documentElement.classList.toggle("light");
+        });
+      }
+
+      // Sidebar collapse toggle
+      const collapseBtn = document.querySelector('aside button[title="Collapse Sidebar"]');
+      const sidebar = document.querySelector("aside");
+      const tabLinks = sidebar?.querySelectorAll(".mri-tab");
+
+      let collapsed = false;
+
+      if (collapseBtn && sidebar && tabLinks) {
+        collapseBtn.addEventListener("click", () => {
+          collapsed = !collapsed;
+          tabLinks.forEach((tab) => {
+            if (collapsed) {
+              tab.classList.add("mri-icon-only");
+              // Hide text nodes (span/text after icon)
+              tab.querySelectorAll("vibe-icon ~ *").forEach((el) => {
+                el.style.display = "none";
+              });
+            } else {
+              tab.classList.remove("mri-icon-only");
+              tab.querySelectorAll("vibe-icon ~ *").forEach((el) => {
+                el.style.display = "";
+              });
+            }
+          });
+        });
+      }
+    });
+  </script>
+  <script type="application/json" id="injected-config">
+    {
+      "systemPrompt": "You are a fast and efficient web development assistant focused on rapid prototyping. \nYour goal is to help the user build functional prototypes in HTML, CSS, and JS.\n\nBelow are the LLMs.txt documentation for the mirai.css component library and the vibe-icon web component.\n\n---\n---\n\n# Mirai.css Component Library Guide for LLMs\n\nMirai.css is a component library that automatically styles native HTML elements into modern, themed components.\nIt provides utility classes for theming, sizing, and variants while integrating with Tailwind CSS.\n\n## CRITICAL SETUP REQUIREMENTS\n\n### Required CDN Imports (EXACT ORDER MATTERS):\n\n```html\n\u003C!-- 1. Tailwind CSS MUST come first -->\n\u003Cscript src=\"https:\/\/cdn.jsdelivr.net\/npm\/@tailwindcss\/browser@4\">\u003C\/script>\n\n\u003C!-- 2. Mirai.css MUST come after Tailwind for proper CSS cascade -->\n\u003Clink rel=\"stylesheet\" href=\"https:\/\/esm.sh\/gh\/aipx-proto\/mirai-css@main\/styles\/mirai.build.css?raw\" \/>\n```\n\n**NEVER** reverse this order or styling will break.\n\n## STRICT USAGE RULES\n\n### DO:\n\n- Use semantic HTML elements (button, input, select, etc.)\n- Use Tailwind classes for layout, spacing, typography, and positioning\n- Use Mirai.css classes for component appearance and behavior\n- Write only HTML with utility classes\n- Use dark theme by default (bg-neutral-700, bg-neutral-800, bg-neutral-900)\n- Use neutral colors (white, neutral-200, neutral-400 for text; neutral-600, neutral-900 for borders)\n\n### NEVER DO:\n\n- **NEVER** Write CSS in `\u003Cstyle>` tags\n- **NEVER** Write CSS in `.css` files\n- **NEVER** Use `style=\"\"` attributes\n- **NEVER** Apply Tailwind classes to table elements (table, thead, tr, td, th, tbody)\n- **NEVER** Style elements that Mirai.css already handles (buttons, inputs, etc.)\n- **NEVER** Use Tailwind CSS inside `\u003Cstyle>` tags (it won't work)\n\n## COLOR SCHEME GUIDELINES\n\nMirai.css is dark theme by default.\n\n**Backgrounds:**\n\n- Primary: `bg-neutral-700` - panel and card background\n- Secondary: `bg-neutral-800` - control background\n- Deepest: `bg-neutral-900` - page background\n\n**Text:**\n\n- Primary: `text-white` - headings\n- Secondary: `text-neutral-200` - body\n- Muted: `text-neutral-400`\n\n**Borders:**\n\n- Prominent: `border-neutral-600` - border around cards\n- Subtle: `border-neutral-900` - border between panels\n\n## COMPONENT PATTERNS\n\n### Buttons\n\n```html\n\u003C!-- Primary button (brand-colored, most prominent) -->\n\u003Cbutton class=\"mri-appearance-primary\">Primary Action\u003C\/button>\n\n\u003C!-- Default button (outlined, secondary) -->\n\u003Cbutton>Default Button\u003C\/button>\n\n\u003C!-- Subtle button (dark background, minimal) -->\n\u003Cbutton class=\"mri-appearance-subtle\">Subtle\u003C\/button>\n\n\u003C!-- Transparent button (no background) -->\n\u003Cbutton class=\"mri-appearance-transparent\">Transparent\u003C\/button>\n\n\u003C!-- Icon-only button (square aspect ratio) -->\n\u003Cbutton class=\"mri-icon-only\">\u003Cvibe-icon name=\"dismiss\">X\u003C\/vibe-icon>\u003C\/button>\n\n\u003C!-- Button-styled elements -->\n\u003Cinput type=\"submit\" value=\"Submit\" \/>\n\u003Cinput type=\"reset\" value=\"Reset\" \/>\n\u003Ca href=\"#\" class=\"mri-button\">Link Button\u003C\/a>\n\u003Cselect class=\"mri-button\">\n  \u003Coption>Option 1\u003C\/option>\n\u003C\/select>\n```\n\n### Inputs\n\n```html\n\u003C!-- Default input (subtle appearance) -->\n\u003Cinput type=\"text\" placeholder=\"Enter text\" \/>\n\n\u003C!-- Outlined input -->\n\u003Cinput type=\"text\" placeholder=\"Outlined input\" class=\"mri-appearance-outline\" \/>\n\n\u003C!-- Input with embedded content (search, buttons, icons) -->\n\u003Cdiv class=\"mri-input\">\n  \u003Cvibe-icon name=\"search\">🔍\u003C\/vibe-icon>\n  \u003Cinput type=\"text\" placeholder=\"Search...\" \/>\n  \u003Cbutton class=\"mri-size-small\">Go\u003C\/button>\n\u003C\/div>\n\n\u003C!-- Form inputs -->\n\u003Cinput type=\"email\" placeholder=\"Email\" \/>\n\u003Cinput type=\"password\" placeholder=\"Password\" \/>\n\u003Ctextarea placeholder=\"Message\">\u003C\/textarea>\n```\n\n### Form Controls\n\n```html\n\u003C!-- Checkbox (default) -->\n\u003Clabel>\u003Cinput type=\"checkbox\" \/> Remember me\u003C\/label>\n\n\u003C!-- Switch variant -->\n\u003Clabel>\u003Cinput type=\"checkbox\" class=\"mri-switch\" \/> Enable notifications\u003C\/label>\n\n\u003C!-- Radio buttons -->\n\u003Clabel>\u003Cinput type=\"radio\" name=\"option\" value=\"1\" \/> Option 1\u003C\/label>\n\u003Clabel>\u003Cinput type=\"radio\" name=\"option\" value=\"2\" \/> Option 2\u003C\/label>\n\n\u003C!-- Range slider -->\n\u003Cinput type=\"range\" min=\"0\" max=\"100\" value=\"50\" \/>\n```\n\n### Progress Indicators\n\n```html\n\u003C!-- Determinate progress bar -->\n\u003Cprogress value=\"33\" max=\"100\">\u003C\/progress>\n\n\u003C!-- Indeterminate progress bar (pulsing) -->\n\u003Cprogress indeterminate>\u003C\/progress>\n\n\u003C!-- Spinner (circular loading indicator) -->\n\u003Cprogress class=\"mri-spinner\" indeterminate>\u003C\/progress>\n```\n\n### Accordions\n\n```html\n\u003C!-- Accordion using native details\/summary -->\n\u003Cdetails>\n  \u003Csummary>Accordion Title\u003C\/summary>\n  \u003Cdiv class=\"p-4\">\n    \u003Cp>Accordion content goes here.\u003C\/p>\n  \u003C\/div>\n\u003C\/details>\n```\n\n### Tabs\n\n```html\n\u003C!-- Horizontal tabs -->\n\u003Cnav class=\"mri-tab-list\">\n  \u003Cbutton class=\"mri-tab mri-active\">Active Tab\u003C\/button>\n  \u003Cbutton class=\"mri-tab\">Tab 2\u003C\/button>\n  \u003Cbutton class=\"mri-tab\">Tab 3\u003C\/button>\n\u003C\/nav>\n\n\u003C!-- Vertical tabs -->\n\u003Cnav class=\"mri-tab-list mri-vertical\">\n  \u003Ca href=\"#section1\" class=\"mri-tab mri-active\">Section 1\u003C\/a>\n  \u003Ca href=\"#section2\" class=\"mri-tab\">Section 2\u003C\/a>\n  \u003Ca href=\"#section3\" class=\"mri-tab\">Section 3\u003C\/a>\n\u003C\/nav>\n```\n\n### Dialogs\n\n```html\n\u003C!-- Native dialog element -->\n\u003Cdialog>\n  \u003Cdiv class=\"p-6\">\n    \u003Ch2 class=\"text-xl font-semibold mb-4\">Dialog Title\u003C\/h2>\n    \u003Cp class=\"mb-4\">Dialog content goes here.\u003C\/p>\n    \u003Cdiv class=\"flex gap-2 justify-end\">\n      \u003Cbutton class=\"mri-appearance-transparent\">Cancel\u003C\/button>\n      \u003Cbutton class=\"mri-appearance-primary\">Confirm\u003C\/button>\n    \u003C\/div>\n  \u003C\/div>\n\u003C\/dialog>\n```\n\n## SIZING CLASSES\n\n```html\n\u003C!-- Small size -->\n\u003Cbutton class=\"mri-size-small\">Small\u003C\/button>\n\n\u003C!-- Default size -->\n\u003Cbutton>Default\u003C\/button>\n\n\u003C!-- Large size -->\n\u003Cbutton class=\"mri-size-large\">Large\u003C\/button>\n```\n\n## ICONS\n\nUse the vibe-icon web component \n\n## LAYOUT WITH TAILWIND\n\nCombine Mirai.css components with Tailwind layout utilities:\n\n```html\n\u003Cdiv class=\"bg-neutral-700 p-6 rounded-2xl max-w-sm flex flex-col gap-4\">\n  \u003Ch2 class=\"text-2xl font-semibold text-white\">Sign In\u003C\/h2>\n  \u003Cp class=\"text-neutral-400\">Sign in to your account\u003C\/p>\n  \u003Cdiv class=\"flex flex-col gap-1\">\n    \u003Clabel class=\"block text-sm font-medium text-neutral-200\">Email\u003C\/label>\n    \u003Cinput type=\"email\" placeholder=\"name@example.com\" \/>\n  \u003C\/div>\n  \u003Cdiv class=\"flex flex-col gap-1\">\n    \u003Clabel class=\"block text-sm font-medium text-neutral-200\">Password\u003C\/label>\n    \u003Cinput type=\"password\" placeholder=\"********\" \/>\n  \u003C\/div>\n  \u003Cdiv class=\"flex items-center gap-2\">\n    \u003Cinput type=\"checkbox\" id=\"remember\" \/>\n    \u003Clabel for=\"remember\" class=\"text-sm text-neutral-200\">Remember me\u003C\/label>\n  \u003C\/div>\n  \u003Cdiv class=\"flex gap-2\">\n    \u003Cbutton class=\"mri-appearance-primary flex-1\">Sign In\u003C\/button>\n    \u003Cbutton class=\"flex-1\">Sign Up\u003C\/button>\n  \u003C\/div>\n\u003C\/div>\n```\n\n---\n---\n\n# Vibe Icon - Microsoft Fluent Icons Web Component\n\n## Installation\n\nAdd this script tag to your HTML:\n\n```html\n\u003Cscript src=\"https:\/\/esm.sh\/vibe-icon@latest\" type=\"module\">\u003C\/script>\n```\n\n## Usage\n\nUse the `\u003Cvibe-icon>` component with these attributes:\n\n- `name` (required): Icon name from the list below\n- `filled` (optional): Shows filled variant when present\n- `size` (optional): Icon size (e.g., \"20\", \"24\")\n\n## Examples\n\n```html\n\u003Cvibe-icon name=\"home\">\u003C\/vibe-icon>\n\u003Cvibe-icon name=\"settings\" filled>\u003C\/vibe-icon>\n\u003Cvibe-icon name=\"search\" size=\"24\">\u003C\/vibe-icon>\n```\n\n## Icon Names (200 Most Common)\n\nFor icons beyond the 200 most common ones listed below, direct users to the [Vibe Icon Search App](https:\/\/aipx-proto.github.io\/vibe-icon\/) where they can browse and search the complete icon library.\n\nIcon names use lowercase with hyphens (e.g., \"arrow-down\", \"weather-sunny\")\n\n### Core Actions\n\nadd, subtract, delete, edit, save, search, share, print, settings, options, filter, lock-closed, lock-open, heart, star, info, question-circle, alert, sign-out, copy, cut, pen\n\n### Navigation\n\narrow-up, arrow-down, arrow-left, arrow-right, arrow-up-right, arrow-up-left, arrow-down-right, arrow-down-left, arrow-previous, arrow-next, arrow-expand, arrow-maximize, arrow-minimize, arrow-redo, arrow-undo, arrow-reply, arrow-reset, chevron-up, chevron-down, chevron-left, chevron-right, chevron-up-down, chevron-down-up, home, navigation, dismiss, more-horizontal, more-vertical\n\n_Hint: `dismiss` is \"x\" or close_\n\n### Media Controls\n\nplay, pause, stop, record, fast-forward, rewind, next, previous, speaker-2, speaker-1, speaker-mute, camera, image, video, music-note-1, mic, mic-off\n\n### Text Formatting\n\ntext-bold, text-italic, text-underline, text-strikethrough, text-align-left, text-align-center, text-align-right, text-align-justify, text-bullet-list, text-number-list, text-quote, link\n\n### Communication\n\nchat, mail, phone, person, people, alert, calendar, attach, bot, chat-help, chat-add, send\n\n### Files \u0026 Data\n\ndocument, folder, document-add, folder-add, arrow-upload, arrow-download, archive, data-pie, data-bar-vertical\n\n### Devices\n\ndesktop, laptop, tablet, phone, smartwatch, print, battery-10, battery-0, wifi-1, bluetooth, fingerprint, qr-code, window-console\n\n### Status \u0026 Feedback\n\ncheckmark, error-circle, checkmark-circle, thumb-like, thumb-dislike, eye, eye-off\n\n### AI\/Tech\n\nbot, brain-circuit, wand, code, sparkle, lightbulb, arrow-clockwise, shield, translate, read-aloud, beaker, database, flash\n\n### Weather\n\nweather-sunny, weather-moon, weather-cloudy, weather-partly-cloudy-day, weather-rain, weather-thunderstorm, weather-snowflake, temperature\n\n### Business\/Commerce\n\ncart, shopping-bag, tag, receipt, trophy, bookmark, flag, ticket-horizontal\n\n### Common UI Elements\n\nglobe, map, location, location-arrow, cloud, fire, leaf-one, gift, key, rocket, compass-northwest, color, hourglass, glasses, crown, clipboard, recycle, plug-connected, luggage, balloon\n\n### Shapes\n\ncircle, triangle, square, rectangle-landscape, diamond, pentagon, hexagon, cube, shapes\n\n---\n---\n\nThe user appreciates your hard work :)\n"
+    }
+  </script>
+</body>
+
+</html>

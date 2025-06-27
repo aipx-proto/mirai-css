@@ -39,7 +39,7 @@ It provides utility classes for theming, sizing, and variants while integrating 
 
 ## COLOR SCHEME GUIDELINES
 
-Mirai.css is dark theme
+Mirai.css is dark theme by default.
 
 **Backgrounds:**
 
@@ -76,7 +76,7 @@ Mirai.css is dark theme
 <button class="mri-appearance-transparent">Transparent</button>
 
 <!-- Icon-only button (square aspect ratio) -->
-<button class="mri-icon-only">×</button>
+<button class="mri-icon-only"><vibe-icon name="dismiss">X</vibe-icon></button>
 
 <!-- Button-styled elements -->
 <input type="submit" value="Submit" />
@@ -98,7 +98,7 @@ Mirai.css is dark theme
 
 <!-- Input with embedded content (search, buttons, icons) -->
 <div class="mri-input">
-  <span class="mri-emojicon">🔍</span>
+  <vibe-icon name="search">🔍</vibe-icon>
   <input type="text" placeholder="Search..." />
   <button class="mri-size-small">Go</button>
 </div>
@@ -200,39 +200,31 @@ Mirai.css is dark theme
 
 ## ICONS
 
-Use emoji wrapped in a span with the `mri-emojicon` class:
-
-```html
-<span class="mri-emojicon">❤️</span>
-<span class="mri-emojicon">🔍</span>
-<span class="mri-emojicon">⚙️</span>
-```
+Use the vibe-icon web component 
 
 ## LAYOUT WITH TAILWIND
 
 Combine Mirai.css components with Tailwind layout utilities:
 
 ```html
-<div class="bg-neutral-700 p-6 rounded-2xl max-w-sm">
-  <h2 class="text-xl font-semibold text-white mb-4">Sign In</h2>
-  <p class="text-neutral-200 mb-4">Sign in to your account</p>
-  <form class="space-y-4">
-    <div class="flex flex-col gap-0 ">
-      <label class="block text-sm font-medium text-neutral-200 mb-1">Email</label>
-      <input type="email" placeholder="name@example.com" />
-    </div>
-    <div class="flex flex-col gap-0">
-      <label class="block text-sm font-medium text-neutral-200 mb-1">Password</label>
-      <input type="password" placeholder="********" />
-    </div>
-    <div class="flex items-center gap-2">
-      <input type="checkbox" id="remember" />
-      <label for="remember" class="text-sm text-neutral-200">Remember me</label>
-    </div>
-    <div class="flex gap-2">
-      <button class="mri-appearance-primary flex-1">Sign In</button>
-      <button class="flex-1">Sign Up</button>
-    </div>
-  </form>
+<div class="bg-neutral-700 p-6 rounded-2xl max-w-sm flex flex-col gap-4">
+  <h2 class="text-2xl font-semibold text-white">Sign In</h2>
+  <p class="text-neutral-400">Sign in to your account</p>
+  <div class="flex flex-col gap-1">
+    <label class="block text-sm font-medium text-neutral-200">Email</label>
+    <input type="email" placeholder="name@example.com" />
+  </div>
+  <div class="flex flex-col gap-1">
+    <label class="block text-sm font-medium text-neutral-200">Password</label>
+    <input type="password" placeholder="********" />
+  </div>
+  <div class="flex items-center gap-2">
+    <input type="checkbox" id="remember" />
+    <label for="remember" class="text-sm text-neutral-200">Remember me</label>
+  </div>
+  <div class="flex gap-2">
+    <button class="mri-appearance-primary flex-1">Sign In</button>
+    <button class="flex-1">Sign Up</button>
+  </div>
 </div>
 ```

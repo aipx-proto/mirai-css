@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mirai.css Example</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="../styles/mirai.build.css" />
+</head>
+
+<body class="bg-neutral-900 text-white min-h-screen">
+  <div class="bg-neutral-700 p-6 rounded-2xl max-w-sm flex flex-col gap-4">
+    <h2 class="text-2xl font-semibold text-white">Sign In</h2>
+    <p class="text-neutral-400">Sign in to your account</p>
+    <div class="flex flex-col gap-1">
+      <label class="block text-sm font-medium text-neutral-200">Email</label>
+      <input type="email" placeholder="name@example.com" />
+    </div>
+    <div class="flex flex-col gap-1">
+      <label class="block text-sm font-medium text-neutral-200">Password</label>
+      <input type="password" placeholder="********" />
+    </div>
+    <div class="flex items-center gap-2">
+      <input type="checkbox" id="remember" />
+      <label for="remember" class="text-sm text-neutral-200">Remember me</label>
+    </div>
+    <div class="flex gap-2">
+      <button class="mri-appearance-primary flex-1">Sign In</button>
+      <button class="flex-1">Sign Up</button>
+    </div>
+  </div>
+</body>
+
+</html>
