@@ -4,32 +4,32 @@
  * Demo: https://aipx-proto.github.io/mirai-css
  * LLMs.txt: https://github.com/aipx-proto/mirai-css/blob/main/styles/mirai.css.md
 !*/
+@layer properties, theme, base, components, utilities;
 
-@import "./font-aptos/font-aptos.css";
-@import "./font-monaspace-neon/font-monaspace-neon.css";
+@import "./font-aptos/font-aptos.css" layer(properties);
+@import "./font-monaspace-neon/font-monaspace-neon.css" layer(properties);
 
 @import "./variables/mirai-theme.css";
 @import "./variables/tailwind-var-overrides.css";
-/* @import "./variables/shadcn.css"; */
-@import "./elements/reset.css";
+@import "./elements/reset.css" layer(base);
 
-@import "./elements/icons.css";
-@import "./elements/accordion.css";
-@import "./elements/base.css";
-@import "./elements/button.css";
-@import "./elements/checkbox-radio.css";
-@import "./elements/control-group.css";
-@import "./elements/dialog.css";
-@import "./elements/disabled.css";
-@import "./elements/fieldset.css";
-@import "./elements/input.css";
-@import "./elements/link.css";
-@import "./elements/popover.css";
-@import "./elements/progress.css";
-@import "./elements/table.css";
-@import "./elements/tabs.css";
-@import "./elements/tabs-hack.css";
-@import "./elements/typography.css";
-@import "./elements/scrollbar.css";
-@import "./elements/switch.css";
-@import "./elements/slider.css";
+@import "./elements/icons.css" layer(components);
+@import "./elements/accordion.css" layer(components);
+@import "./elements/base.css" layer(components);
+@import "./elements/button.css" layer(components);
+@import "./elements/checkbox-radio.css" layer(components);
+@import "./elements/control-group.css" layer(components);
+@import "./elements/dialog.css" layer(components);
+@import "./elements/disabled.css" layer(components);
+@import "./elements/fieldset.css" layer(components);
+@import "./elements/input.css" layer(components);
+@import "./elements/link.css" layer(components);
+@import "./elements/popover.css" layer(components);
+@import "./elements/progress.css" layer(components);
+@import "./elements/table.css" layer(components);
+@import "./elements/tabs.css" layer(components);
+@import "./elements/tabs-hack.css" layer(components);
+@import "./elements/typography.css" layer(components);
+@import "./elements/scrollbar.css" layer(components);
+@import "./elements/switch.css" layer(components);
+@import "./elements/slider.css" layer(components);

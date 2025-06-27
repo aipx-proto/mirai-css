@@ -4,6 +4,8 @@
  * Demo: https://aipx-proto.github.io/mirai-css
  * LLMs.txt: https://github.com/aipx-proto/mirai-css/blob/main/styles/mirai.css.md
 !*/
+@layer properties, theme, base, components, utilities;
+@layer properties{
 
 @font-face {
   font-family: "Aptos";
@@ -90,9 +92,9 @@
   font-weight: 900;
   font-style: italic;
 }
-
+}
+@layer properties{
 /* Variable Font */
-
 @font-face {
   font-family: "Monaspace Neon";
   font-weight: 200 800;
@@ -101,7 +103,7 @@
   font-display: swap;
   src: url("font-monaspace-neon/MonaspaceNeonVarVF[wght,wdth,slnt].woff2") format("woff2-variations");
 }
-
+}
 :root {
   --mri-font-size-1: 40px;
   --mri-font-size-2: 28px;
@@ -144,14 +146,12 @@
 
   --mri-opacity-disabled: 0.5;
 }
-
 .mri-size-small {
   --mri-size-height: 24px;
   --mri-size-font: var(--mri-font-size-6);
   --mri-size-padding: 8px;
   --mri-size-icon: 12px;
 }
-
 :root,
 .mri-size-medium {
   --mri-size-height: 32px;
@@ -159,27 +159,22 @@
   --mri-size-padding: 12px;
   --mri-size-icon: 16px;
 }
-
 .mri-size-large {
   --mri-size-height: 40px;
   --mri-size-font: var(--mri-font-size-4);
   --mri-size-padding: 16px;
   --mri-size-icon: 20px;
 }
-
 .mri-shape-square {
   --mri-border-radius: var(--mri-border-radius-small);
 }
-
 :root,
 .mri-shape-rounded {
   --mri-border-radius: var(--mri-border-radius-medium);
 }
-
 .mri-shape-circular {
   --mri-border-radius: var(--mri-border-radius-circular);
 }
-
 :root, /*default*/
 .dark, /*tailwind*/
 .mri-theme-dark {
@@ -220,7 +215,6 @@
     --mri-interactive-rest: transparent;
   }
 }
-
 .light, /*tailwind*/
 .mri-theme-light {
   color-scheme: light;
@@ -260,7 +254,6 @@
     --mri-interactive-rest: transparent;
   }
 }
-
 /* 
 Colors rules:
 - Write all layouts in dark theme (unless explicitly asked not to).
@@ -269,7 +262,6 @@ Colors rules:
 - For border, only use `neutral-900` or `neutral-600`.
 - For text, only use `white`, `neutral-200` or `neutral-400`.
 */
-
 :root,
 .dark {
   --color-black: var(--mri-color-background-4);
@@ -288,12 +280,10 @@ Colors rules:
   --font-sans: var(--mri-font-family-sans);
   --font-mono: var(--mri-font-family-mono);
 }
-
 /* .light {
   ...currently unsupported
 } */
-
-/* @import "./variables/shadcn.css"; */
+@layer base{
 
 html,
 body {
@@ -306,6 +296,8 @@ body {
 *::after {
   box-sizing: border-box;
 }
+}
+@layer components{
 
 :root, .mri-theme-dark, .dark {
   --mri-icon-check: url('data:image/svg+xml,<svg style="fill:black;" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M9.76 3.2c.3.29.32.76.04 1.06l-4.25 4.5a.75.75 0 0 1-1.08.02L2.22 6.53a.75.75 0 0 1 1.06-1.06l1.7 1.7L8.7 3.24a.75.75 0 0 1 1.06-.04Z"></path></svg>');
@@ -325,7 +317,8 @@ body {
   font-style: normal;
   filter: grayscale(1);
 }
-
+}
+@layer components{
 details {
   --_timing-open: 0.2s;
   --_timing-close: 0.07s;
@@ -386,10 +379,13 @@ details {
     transition-timing-function: ease-in;
   }
 }
-
+}
+@layer components{
 html {
   background-color: var(--mri-color-background-3);
 }
+}
+@layer components{
 
 button:where(:not(.mri-tab)),
 input[type="button"],
@@ -524,6 +520,8 @@ input[type="file"] {
     }
   }
 }
+}
+@layer components{
 
 input[type="checkbox"]:where(:not(.mri-switch)),
 input[type="radio"] {
@@ -607,7 +605,8 @@ input[type="checkbox"]:where(:not(.mri-switch)) {
     opacity: 1;
   }
 }
-
+}
+@layer components{
 .mri-control-group {
   display: flex;
   gap: 1px;
@@ -637,7 +636,8 @@ input[type="checkbox"]:where(:not(.mri-switch)) {
     }
   }
 }
-
+}
+@layer components{
 dialog {
   color: inherit;
 
@@ -725,7 +725,8 @@ dialog {
   }
 
 }
-
+}
+@layer components{
 :disabled, [disabled], .mri-disabled {
   cursor: not-allowed;
   opacity: var(--mri-opacity-disabled);
@@ -738,6 +739,8 @@ dialog {
     opacity: 1;
   } */
 }
+}
+@layer components{
 
 fieldset{
     border: 1px solid var(--mri-color-border-1);
@@ -753,6 +756,8 @@ legend {
     font-weight: var(--mri-font-weight-bold);
     color: var(--mri-color-text-1);
 }
+}
+@layer components{
 
 input:where(:not([type])),
   input[type="text"],
@@ -903,7 +908,8 @@ input[type="file"],
 select {
   cursor: pointer;
 }
-
+}
+@layer components{
 a:where(:not(.mri-button):not(.mri-tab)) {
   color: var(--mri-color-brand-text);
   text-decoration: none;
@@ -915,6 +921,8 @@ a:where(:not(.mri-button):not(.mri-tab)) {
     color: var(--mri-color-brand-text);
   }
 }
+}
+@layer components{
 
 [popover] {
   border: 1px solid var(--mri-color-border-1);
@@ -1023,7 +1031,6 @@ a:where(:not(.mri-button):not(.mri-tab)) {
 /* [popover="auto"] {} */
 
 /* tooltip / hint is experimental */
-
 /* [popover="hint"] {} */
 
 /* :popover-open {} */
@@ -1052,12 +1059,10 @@ a:where(:not(.mri-button):not(.mri-tab)) {
   position-area: var(--_position-above-start);
   margin: var(--_margin-offset-above-below);
 }
-
 @position-try --_position-try-above-center {
   position-area: var(--_position-above-center);
   margin: var(--_margin-offset-above-below);
 }
-
 @position-try --_position-try-above-end {
   position-area: var(--_position-above-end);
   margin: var(--_margin-offset-above-below);
@@ -1067,12 +1072,10 @@ a:where(:not(.mri-button):not(.mri-tab)) {
   position-area: var(--_position-below-start);
   margin: var(--_margin-offset-above-below);
 }
-
 @position-try --_position-try-below-center {
   position-area: var(--_position-below-center);
   margin: var(--_margin-offset-above-below);
 }
-
 @position-try --_position-try-below-end {
   position-area: var(--_position-below-end);
   margin: var(--_margin-offset-above-below);
@@ -1082,12 +1085,10 @@ a:where(:not(.mri-button):not(.mri-tab)) {
   position-area: var(--_position-after-top);
   margin: var(--_margin-offset-before-after);
 }
-
 @position-try --_position-try-after-center {
   position-area: var(--_position-after-center);
   margin: var(--_margin-offset-before-after);
 }
-
 @position-try --_position-try-after-bottom {
   position-area: var(--_position-after-bottom);
   margin: var(--_margin-offset-before-after);
@@ -1097,16 +1098,16 @@ a:where(:not(.mri-button):not(.mri-tab)) {
   position-area: var(--_position-before-top);
   margin: var(--_margin-offset-before-after);
 }
-
 @position-try --_position-try-before-center {
   position-area: var(--_position-before-center);
   margin: var(--_margin-offset-before-after);
 }
-
 @position-try --_position-try-before-bottom {
   position-area: var(--_position-before-bottom);
   margin: var(--_margin-offset-before-after);
 }
+}
+@layer components{
 
 progress.mri-spinner {
   --_size-dimension: 20px;
@@ -1202,7 +1203,6 @@ progress:where(:not(.mri-spinner)):indeterminate {
   background: transparent;
   height: var(--_size-height);
 }
-
 ::-webkit-progress-value {
   background: var(--mri-color-brand-base);
 }
@@ -1215,12 +1215,10 @@ progress:where(:not(.mri-spinner)):indeterminate {
   /* intent-success */
   background: green;
 }
-
 ::-webkit-meter-suboptimum-value {
   /* intent-warning */
   background: orange;
 }
-
 ::-webkit-meter-even-less-good-value {
   /* intent-danger */
   background: red;
@@ -1256,6 +1254,8 @@ progress:where(:not(.mri-spinner)):indeterminate {
     transform: rotate(720deg);
   }
 }
+}
+@layer components{
 
 table {
   --_border-radius: var(--mri-border-radius-medium);
@@ -1305,6 +1305,8 @@ table > :first-child tr:first-child {
     }
   }
 }
+}
+@layer components{
 
 .mri-tab-list,
 [role="tablist"] {
@@ -1474,6 +1476,9 @@ button.mri-tab {
   background: none;
   border: none;
 }
+}
+@layer components{
+
 
 /*
 
@@ -1502,8 +1507,8 @@ button.mri-tab {
 
 */
 
-/** Hide the #panel-N when the corresponding radio is not checked */
 
+/** Hide the #panel-N when the corresponding radio is not checked */
 :has([aria-controls="panel-1"] input[type="radio"]:not(:checked)) #panel-1,
 :has([aria-controls="panel-2"] input[type="radio"]:not(:checked)) #panel-2,
 :has([aria-controls="panel-3"] input[type="radio"]:not(:checked)) #panel-3,
@@ -1536,6 +1541,8 @@ label[role="tab"] {
     display: none;
   }
 }
+}
+@layer components{
 
 * {
   /* for button, input and other things that don't inherit by default */
@@ -1619,7 +1626,6 @@ blockquote {
   color: var(--mri-color-text-1);
   font-style: italic;
 }
-
 q {
   font-style: italic;
   color: var(--mri-color-text-1);
@@ -1657,12 +1663,14 @@ hr {
   border-top: 1px solid var(--mri-color-border-1);
   margin: 20px 0;
 }
-
+}
+@layer components{
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--mri-color-text-3) transparent;
 }
-
+}
+@layer components{
 input[type="checkbox"].mri-switch {
 
   --_color-background: var(--mri-color-background-2);
@@ -1721,7 +1729,8 @@ input[type="checkbox"].mri-switch {
     --_color-checked: var(--_color-border);
   }
 }
-
+}
+@layer components{
 input[type="range"] {
   --_size-thumb: 20px;
   --_size-track: 4px;
@@ -1750,4 +1759,5 @@ input[type="range"] {
     background: var(--mri-color-brand-base);
     box-shadow: inset 0 0 0 3px var(--mri-color-background-1);
   }
+}
 }
