@@ -45,7 +45,7 @@
 
   --_size-tab-underline: 2px;
   --_color-tab-underline-hover: var(--mri-color-text-4);
-  --_color-tab-underline-active: var(--mri-color-brand-text);
+  --_color-tab-underline-active: var(--mri-color-brand-base);
   --_duration-tab-underline: 0.1s;
 
   position: relative;

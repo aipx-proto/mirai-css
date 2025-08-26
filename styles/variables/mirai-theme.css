@@ -90,9 +90,9 @@
   --mri-color-text-3: #999999;
   --mri-color-text-4: #5c5c5c;
 
-  --mri-color-brand-base: #005E8B;
+  --mri-color-brand-base: #643FB2;
   --mri-color-on-brand-text: #FFFFFF;
-  --mri-color-brand-text: #0090d3;
+  --mri-color-brand-text: #C9AAF9;
 
   &,
   .mri-appearance-outline {
@@ -130,9 +130,9 @@
   --mri-color-text-3: #707070;
   --mri-color-text-4: #bdbdbd;
 
-  --mri-color-brand-base: #007BB4;
+  --mri-color-brand-base: #8251EE;
   --mri-color-on-brand-text: #FFFFFF;
-  --mri-color-brand-text: #007BB4;
+  --mri-color-brand-text: #643FB2;
 
   &,
   .mri-appearance-outline {
